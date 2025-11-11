@@ -143,7 +143,17 @@
         .title{font-weight:600;font-size:15px;margin:0}
         .date{font-size:13px;color:var(--muted)}
         .actions{margin-top:auto}
-        .btn{width:100%;padding:12px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:600;font-size:16px;}
+        .btn{
+            width:100%;padding:12px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:600;font-size:16px;
+            /* Buton taşma düzeltmeleri */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
         .btn.download{background:var(--accent);color:#0b0c0f}
         .btn:active{transform:translateY(1px)}
         .empty{padding:40px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);text-align:center;color:var(--muted)}
@@ -271,7 +281,6 @@
                 team_2: 'Kayserispor',
                 league: 'Süper Lig' 
             }
-            // YENİ MAÇLARI EKLEDİĞİNDE EN SONUNCU OBJENİN ARKASINA VİRGÜL KOYMAYI UNUTMA!
         ];
 
         const grid = document.getElementById('grid');
@@ -283,7 +292,7 @@
         let activeFilterValue = ""; 
         let activeFilterGroup = "all";
 
-        // --- MENU JS ---
+        // --- MENU JS (Açma/Kapama) ---
         const sidebar = document.getElementById('sidebar');
         const menuToggle = document.getElementById('menuToggle');
         const closeMenu = document.getElementById('closeMenu');
@@ -291,13 +300,11 @@
         const overlay = document.getElementById('overlay');
         const leagueLinks = document.getElementById('leagueLinks');
         
-        // Menü Aç/Kapa İşlevi
         function toggleMenu(forceOpen) {
             const isOpen = sidebar.classList.contains('open');
             if (forceOpen === undefined) {
                 forceOpen = !isOpen;
             }
-            
             if (forceOpen) {
                 sidebar.classList.add('open');
                 mainBody.classList.add('menu-open');
@@ -325,7 +332,7 @@
         });
 
 
-        // --- FİLTRELEME JS ---
+        // --- FİLTRELEME VE RENDER JS ---
 
         function renderList(list) {
             grid.innerHTML = '';
@@ -343,7 +350,7 @@
                         <div class="date">${formatDate(m.date)}</div>
                         <div class="actions">
                             <a href="${decodeURIComponent(m.driveLink)}" target="_blank" class="btn download">
-                                📥 ${escapeHtml(m.team_1)} vs ${escapeHtml(m.team_2)} Tekrarını İndir
+                                📥 İndir
                             </a>
                         </div>
                     </div>
@@ -352,17 +359,14 @@
             });
         }
         
-        // Ana filtreleme fonksiyonu
         function filterAndSearch() {
             const q = searchInput.value.trim().toLowerCase();
             
             const filtered = matches.filter(m => {
-                // 1. Arama Kutusu Filtresi
                 const searchMatch = m.title.toLowerCase().includes(q) || 
                                     m.team_1.toLowerCase().includes(q) || 
                                     m.team_2.toLowerCase().includes(q);
                                     
-                // 2. Menü Filtresi (Takım veya Lig)
                 let menuMatch = true;
                 if (activeFilterValue) {
                     if (activeFilterGroup === 'team') {
@@ -377,27 +381,18 @@
             renderList(filtered);
         }
 
-        // Menüdeki tüm linklere işleyici ekle
         document.querySelectorAll('.filter-link').forEach(link => {
             link.addEventListener('click', (e) => {
-                // Aktif butonu sıfırla
                 document.querySelectorAll('.filter-link').forEach(a => a.classList.remove('active'));
-                
-                // Tıklanan linki aktif yap
                 e.target.classList.add('active');
-                
-                // Aktif filtre değerlerini al
                 activeFilterValue = e.target.dataset.filter;
                 activeFilterGroup = e.target.dataset.group;
-                
-                // Arama kutusunu temizle ve filtrele
                 searchInput.value = '';
                 filterAndSearch();
-                toggleMenu(false); // Menüyü kapat
+                toggleMenu(false);
             });
         });
 
-        // Olay dinleyicileri
         searchInput.addEventListener('input', filterAndSearch);
 
         // helpers
