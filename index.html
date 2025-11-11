@@ -145,7 +145,6 @@
         .actions{margin-top:auto}
         .btn{
             width:100%;padding:12px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:600;font-size:16px;
-            /* Buton düzeltmeleri */
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -202,7 +201,8 @@
             </div>
 
         <h3>Takımlar</h3>
-        </div>
+        <div id="teamLinks"></div>
+    </div>
 
     <div class="wrap">
         <header>
@@ -238,11 +238,10 @@
     </div>
 
     <script>
-        // LÜTFEN SADECE BU DİZİYİ KENDİ MAÇLARINIZLA GÜNCELLEYİN!
+        // MAÇ LİSTESİ: LÜTFEN SADECE BU DİZİYİ KENDİ MAÇLARINIZLA GÜNCELLEYİN!
         const genericCover = 'https://images.unsplash.com/photo-1549476722-1d5964f9f4a1?q=80&w=1200&auto=format&fit=crop';
         
         const matches = [
-            // -----------------------------------------------------
             // 1. TRABZONSPOR MAÇI
             {
                 id: 'ts-alanya-2025-11-08',
@@ -255,7 +254,7 @@
                 league: 'Süper Lig'
             },
             
-            // 2. GAZİANTEP MAÇI (DÜZELTİLDİ)
+            // 2. GAZİANTEP MAÇI
             {
                 id: 'GFK-GS',
                 title: 'Gaziantep - Galatasaray',
@@ -267,7 +266,7 @@
                 league: 'Süper Lig' 
             },
             
-            // 3. GALATASARAY - KARAGÜMRÜK (DÜZELTİLDİ)
+            // 3. GALATASARAY - KARAGÜMRÜK
             {
                 id: 'gs-karagumruk-2025-08-15',
                 title: 'Galatasaray 3 - 0 Karagümrük — Süper Lig (1. Hafta)',
@@ -309,6 +308,8 @@
         const mainBody = document.getElementById('mainBody');
         const overlay = document.getElementById('overlay');
         const leagueLinks = document.getElementById('leagueLinks');
+        // Yeni Team Links divini burada yakalıyoruz
+        const teamLinksContainer = document.getElementById('teamLinks'); 
         
         function toggleMenu(forceOpen) {
             const isOpen = sidebar.classList.contains('open');
@@ -330,12 +331,11 @@
         closeMenu.addEventListener('click', () => toggleMenu(false));
         overlay.addEventListener('click', () => toggleMenu(false));
 
-        // Benzersiz Ligleri topla ve menüye ekle
+        // Benzersiz Ligleri ve Takımları topla ve menüye ekle
         function updateSidebarLinks(list){
-            // Sadece YAYINLANMIŞ (isDraft: true olmayan) maçlardan menü oluşturur.
             const publishedMatches = list.filter(m => !m.isDraft);
 
-            // Ligleri Güncelle
+            // 1. Ligleri Güncelle
             leagueLinks.innerHTML = '';
             const uniqueLeagues = [...new Set(publishedMatches.map(m => m.league).filter(l => l))].sort();
             uniqueLeagues.forEach(league => {
@@ -347,9 +347,8 @@
                 leagueLinks.appendChild(link);
             });
             
-            // Takımları Güncelle 
-            const teamLinksContainer = document.querySelector('.sidebar h3:nth-of-type(2)').nextElementSibling;
-            teamLinksContainer.innerHTML = '';
+            // 2. Takımları Güncelle
+            teamLinksContainer.innerHTML = ''; // Temizle
             const allTeams = publishedMatches.flatMap(m => [m.team_1, m.team_2]).filter(t => t);
             const uniqueTeams = [...new Set(allTeams)].sort();
             
@@ -362,7 +361,7 @@
                 teamLinksContainer.appendChild(link);
             });
             
-            // Filtre bağlantılarına click listener ekle (Tüm menüyü yeniden tarar)
+            // 3. Filtre bağlantılarına click listener ekle
             document.querySelectorAll('.filter-link').forEach(link => {
                 link.addEventListener('click', (e) => {
                     document.querySelectorAll('.filter-link').forEach(a => a.classList.remove('active'));
@@ -376,12 +375,9 @@
             });
         }
 
-
         // --- FİLTRELEME VE RENDER JS ---
-
         function renderList(list) {
             grid.innerHTML = '';
-            // Listede görünür maç kalmadığında "bulunamadı" mesajı
             if(!list.length){ empty.style.display='block'; return }
             empty.style.display='none';
             
@@ -408,10 +404,8 @@
         function filterAndSearch() {
             const q = searchInput.value.trim().toLowerCase();
             
-            // Sadece yayınlanmış maçları al
-            let filtered = matches.filter(m => !m.isDraft).slice().reverse(); // Maçları ters çevir (en yeni üste) ve kopyala
+            let filtered = matches.filter(m => !m.isDraft).slice().reverse(); 
             
-            // Eğer arama kutusunda yazı varsa, sadece arama sonucunu göster
             if (q) {
                  filtered = filtered.filter(m => 
                      m.title.toLowerCase().includes(q) || 
@@ -420,24 +414,21 @@
                  );
             }
             
-            // Menüden filtre seçiliyse, filtrele
             if (activeFilterValue) {
                 mainTitle.textContent = activeFilterValue === "" ? "Son Eklenen Maçlar" : activeFilterValue + " Maçları";
 
                 if (activeFilterGroup === 'all') {
-                    // Zaten tüm maçlar listesi ters çevrilmiş durumda
                 } else if (activeFilterGroup === 'team') {
                     filtered = filtered.filter(m => m.team_1 === activeFilterValue || m.team_2 === activeFilterValue);
-                    
                 } else if (activeFilterGroup === 'league') {
                     filtered = filtered.filter(m => m.league === activeFilterValue);
                 }
             } else {
-                mainTitle.textContent = "Son Eklenen Maçlar"; // Filtre yoksa varsayılan başlık
+                mainTitle.textContent = "Son Eklenen Maçlar"; 
             }
             
             renderList(filtered);
-            updateSidebarLinks(matches); // Maç listesi değiştikçe menüyü güncelle
+            updateSidebarLinks(matches);
         }
 
         searchInput.addEventListener('input', filterAndSearch);
@@ -456,7 +447,7 @@
         }
 
         // initial render
-        filterAndSearch(); // Sayfa yüklendiğinde listeyi ters çevirip render eder.
+        filterAndSearch();
     </script>
 </body>
 </html>
