@@ -152,8 +152,13 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            transition: background 0.2s ease, color 0.2s ease; /* HOVER GEÇİŞİ İÇİN EKLEDİK */
         }
         .btn.download{background:var(--accent);color:#0b0c0f}
+        .btn.download:hover { /* YENİ EKLEDİĞİMİZ HOVER KURALI */
+            background: #28a745; /* Yeşil */
+            color: #fff;        /* Beyaz yazı */
+        }
         .btn:active{transform:translateY(1px)}
         .empty{padding:40px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);text-align:center;color:var(--muted)}
         footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
@@ -308,7 +313,7 @@
         const mainBody = document.getElementById('mainBody');
         const overlay = document.getElementById('overlay');
         const leagueLinks = document.getElementById('leagueLinks');
-        const teamLinksContainer = document.getElementById('teamLinks'); // DOĞRU TANIMLANDI
+        const teamLinksContainer = document.getElementById('teamLinks'); 
         
         function toggleMenu(forceOpen) {
             const isOpen = sidebar.classList.contains('open');
