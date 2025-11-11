@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MATCH REPLAYS — Starter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0c0f;
+      --card:#0f1114;
+      --muted:#9aa0a6;
+      --accent:#ffb703;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(255,183,3,0.03), transparent),
+                  linear-gradient(180deg,#08090b 0%,var(--bg) 100%);
+      color:#e6e9ee;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px 20px;
+      display:flex;justify-content:center;
+    }
+    .wrap{width:100%;max-width:var(--maxw)}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ff6b6b);display:flex;align-items:center;justify-content:center;font-weight:700;color:#0b0c0f}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:0;color:var(--muted);font-size:13px}
+    .controls{display:flex;gap:10px;align-items:center}
+    .search{background:var(--glass);border:1px solid rgba(255,255,255,0.03);padding:10px 12px;border-radius:10px;color:var(--muted);min-width:220px}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;min-height:320px}
+    .cover{height:160px;background:#0b0c0f;background-size:cover;background-position:center}
+    .meta{padding:14px 14px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+    .title{font-weight:600;font-size:15px;margin:0}
+    .date{font-size:13px;color:var(--muted)}
+    .actions{margin-top:auto;display:flex;gap:10px}
+    .btn{flex:1;padding:10px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+    .btn.watch{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--accent)}
+    .btn.download{background:var(--accent);color:#0b0c0f}
+    .btn:active{transform:translateY(1px)}
+
+    .empty{padding:40px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);text-align:center;color:var(--muted)}
+
+    /* modal for embed */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,3,5,0.6);z-index:60}
+    .modal.open{display:flex}
+    .modal-card{width:90%;max-width:960px;background:#070709;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
+    .modal-header{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.02)}
+    .modal-body{padding:0}
+    .embed-wrap{width:100%;height:560px;background:#000}
+    .close-btn{background:transparent;border:0;color:var(--muted);padding:8px 10px;border-radius:8px}
+
+    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+
+    @media (max-width:600px){
+      .embed-wrap{height:260px}
+      .cover{height:120px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <h1>MEXY Match Replays</h1>
+          <p class="lead">Sadece senin kayıtların — hızlı indir & izle</p>
+        </div>
+      </div>
+      <div class="controls">
+        <input id="search" class="search" placeholder="Maç ara (ör. Galatasaray)" />
+        <button id="addSample" class="btn watch" title="Örnek maç ekle">+ Örnek</button>
+      </div>
+    </header>
+
+    <main>
+      <div id="grid" class="grid"></div>
+      <div id="empty" class="empty" style="display:none;margin-top:18px">Henüz maç yok. Sağ üstten ekle ya da "Örnek" ile başla.</div>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Mexy • Hazır starter — GitHub Pages ile yayınla
+    </footer>
+  </div>
+
+  <!-- modal -->
+  <div id="modal" class="modal" role="dialog" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <strong id="modalTitle">İzle</strong>
+        <button id="closeModal" class="close-btn">Kapat</button>
+      </div>
+      <div class="modal-body">
+        <div class="embed-wrap" id="embedWrap">
+          <!-- iframe goes here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sample matches array - edit these entries to add your own
+    const matches = [
+      {
+        id: 'galatasaray-fener-2025',
+        title: 'Galatasaray vs Fenerbahçe — Full Match (4K)',
+        date: '2025-05-04',
+        cover: 'https://images.unsplash.com/photo-1517927033932-b5d6ecf0f1a3?q=80&w=1200&auto=format&fit=crop',
+        driveLink: 'https://drive.google.com/uc?export=download&id=DRIVE_FILE_ID',
+        embedLink: '' // optional: if you have an embedable player URL
+      }
+    ];
+
+    const grid = document.getElementById('grid');
+    const empty = document.getElementById('empty');
+    const yearSpan = document.getElementById('year');
+    yearSpan.textContent = new Date().getFullYear();
+
+    function renderList(list) {
+      grid.innerHTML = '';
+      if(!list.length){ empty.style.display='block'; return }
+      empty.style.display='none';
+      list.forEach(m => {
+        const card = document.createElement('article');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="cover" style="background-image:url('${m.cover}')"></div>
+          <div class="meta">
+            <h3 class="title">${escapeHtml(m.title)}</h3>
+            <div class="date">${formatDate(m.date)}</div>
+            <div class="actions">
+              <button class="btn watch" data-embed='${encodeURIComponent(m.embedLink||"")}' data-title='${escapeHtml(m.title)}'>İzle</button>
+              <button class="btn download" data-drive='${encodeURIComponent(m.driveLink)}'>İndir</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      attachHandlers();
+    }
+
+    function attachHandlers(){
+      document.querySelectorAll('.btn.download').forEach(b=>{
+        b.onclick = (e)=>{
+          const link = decodeURIComponent(e.currentTarget.dataset.drive);
+          if(!link){ alert('İndir linki ayarlı değil'); return }
+          window.open(link, '_blank');
+        }
+      });
+      document.querySelectorAll('.btn.watch').forEach(b=>{
+        b.onclick = (e)=>{
+          const embed = decodeURIComponent(e.currentTarget.dataset.embed);
+          const title = e.currentTarget.dataset.title || 'İzle';
+          openModal(title, embed);
+        }
+      });
+    }
+
+    function openModal(title, embedUrl){
+      const modal = document.getElementById('modal');
+      const embedWrap = document.getElementById('embedWrap');
+      const modalTitle = document.getElementById('modalTitle');
+      modalTitle.textContent = title;
+      embedWrap.innerHTML = '';
+      if(embedUrl){
+        // try to create iframe
+        const iframe = document.createElement('iframe');
+        iframe.src = embedUrl;
+        iframe.width = '100%';
+        iframe.height = '100%';
+        iframe.frameBorder = 0;
+        iframe.allow = 'autoplay; fullscreen';
+        embedWrap.appendChild(iframe);
+      } else {
+        embedWrap.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted)">Embed link yok — İndirmek için "İndir" butonunu kullan.</div>';
+      }
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+    }
+
+    document.getElementById('closeModal').onclick = ()=>{
+      const modal = document.getElementById('modal');
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      document.getElementById('embedWrap').innerHTML='';
+    }
+
+    // simple search
+    document.getElementById('search').addEventListener('input', (e)=>{
+      const q = e.target.value.trim().toLowerCase();
+      const filtered = matches.filter(m=>m.title.toLowerCase().includes(q));
+      renderList(filtered);
+    });
+
+    // add sample button (for quick testing)
+    document.getElementById('addSample').addEventListener('click', ()=>{
+      const sample = Object.assign({}, matches[0]);
+      sample.id = 'sample-'+Date.now();
+      sample.title = sample.title + ' (Örnek)';
+      matches.unshift(sample);
+      renderList(matches);
+    });
+
+    // helpers
+    function formatDate(d){
+      if(!d) return '';
+      const dt = new Date(d);
+      if(isNaN(dt)) return d;
+      return dt.toLocaleDateString('tr-TR',{day:'2-digit',month:'short',year:'numeric'});
+    }
+    function escapeHtml(str){
+      return String(str).replace(/[&<>\"']/g, function(s){
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s];
+      });
+    }
+
+    // initial render
+    renderList(matches);
+  </script>
+</body>
+</html>
