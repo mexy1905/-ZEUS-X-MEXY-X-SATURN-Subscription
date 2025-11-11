@@ -159,7 +159,7 @@
         .empty{padding:40px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);text-align:center;color:var(--muted)}
         footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
         
-        /* Yeni Başlık Stili */
+        /* Başlık Stili */
         h2.main-title {
             font-size: 24px;
             color: #e6e9ee;
@@ -215,7 +215,7 @@
                     <div class="logo">M</div>
                     <div>
                         <h1>MEXY ARCHIVE</h1>
-                        <p class="lead">.</p>
+                        <p class="lead">Kendi kayıtların — Hızlı erişim için soldaki menüyü kullan.</p>
                     </div>
                 </div>
             </div>
@@ -226,25 +226,19 @@
         </header>
 
         <main>
-            <h2 id="mainTitle" class="main-title">Tüm Maçlar</h2> 
+            <h2 id="mainTitle" class="main-title">Son Eklenen Maçlar</h2> 
             
             <div id="grid" class="grid"></div>
             <div id="empty" class="empty" style="display:none;margin-top:18px">Filtreye uygun maç bulunamadı.</div>
         </main>
 
         <footer>
-            © <span id="year"></span> Mexy Archive • Tüm hakları saklıdır
+            © <span id="year"></span> Mexy Archive. Tüm Hakları Saklıdır.
         </footer>
     </div>
 
     <script>
         // LÜTFEN SADECE BU DİZİYİ KENDİ MAÇLARINIZLA GÜNCELLEYİN!
-        const genericCover = 'https://images.unsplash.com/photo-1549476722-1d5964f9f4a1?q=80&w=1200&auto=format&fit=crop';
-        
-        const matches = [
-            // -----------------------------------------------------
-            // 1. TRABZONSPOR MAÇI (SENİN KAYDIN)
-         // LÜTFEN SADECE BU DİZİYİ KENDİ MAÇLARINIZLA GÜNCELLEYİN!
         const genericCover = 'https://images.unsplash.com/photo-1549476722-1d5964f9f4a1?q=80&w=1200&auto=format&fit=crop';
         
         const matches = [
@@ -261,7 +255,7 @@
                 league: 'Süper Lig'
             },
             
-            // 2. GAZİANTEP MAÇI (HATA DÜZELTİLDİ)
+            // 2. GAZİANTEP MAÇI (DÜZELTİLDİ)
             {
                 id: 'GFK-GS',
                 title: 'Gaziantep - Galatasaray',
@@ -273,7 +267,7 @@
                 league: 'Süper Lig' 
             },
             
-            // 3. GALATASARAY - KARAGÜMRÜK (HATA DÜZELTİLDİ)
+            // 3. GALATASARAY - KARAGÜMRÜK (DÜZELTİLDİ)
             {
                 id: 'gs-karagumruk-2025-08-15',
                 title: 'Galatasaray 3 - 0 Karagümrük — Süper Lig (1. Hafta)',
@@ -303,7 +297,7 @@
         const yearSpan = document.getElementById('year');
         yearSpan.textContent = new Date().getFullYear();
         const searchInput = document.getElementById('search');
-        const mainTitle = document.getElementById('mainTitle'); // Yeni Başlık elementi
+        const mainTitle = document.getElementById('mainTitle'); 
         
         let activeFilterValue = ""; 
         let activeFilterGroup = "all";
@@ -338,9 +332,12 @@
 
         // Benzersiz Ligleri topla ve menüye ekle
         function updateSidebarLinks(list){
+            // Sadece YAYINLANMIŞ (isDraft: true olmayan) maçlardan menü oluşturur.
+            const publishedMatches = list.filter(m => !m.isDraft);
+
             // Ligleri Güncelle
             leagueLinks.innerHTML = '';
-            const uniqueLeagues = [...new Set(list.map(m => m.league).filter(l => l))].sort();
+            const uniqueLeagues = [...new Set(publishedMatches.map(m => m.league).filter(l => l))].sort();
             uniqueLeagues.forEach(league => {
                 const link = document.createElement('a');
                 link.className = 'filter-link';
@@ -350,10 +347,10 @@
                 leagueLinks.appendChild(link);
             });
             
-            // Takımları Güncelle (Dinamik olarak tüm takımları ekle)
+            // Takımları Güncelle 
             const teamLinksContainer = document.querySelector('.sidebar h3:nth-of-type(2)').nextElementSibling;
             teamLinksContainer.innerHTML = '';
-            const allTeams = list.flatMap(m => [m.team_1, m.team_2]).filter(t => t);
+            const allTeams = publishedMatches.flatMap(m => [m.team_1, m.team_2]).filter(t => t);
             const uniqueTeams = [...new Set(allTeams)].sort();
             
             uniqueTeams.forEach(team => {
@@ -384,6 +381,7 @@
 
         function renderList(list) {
             grid.innerHTML = '';
+            // Listede görünür maç kalmadığında "bulunamadı" mesajı
             if(!list.length){ empty.style.display='block'; return }
             empty.style.display='none';
             
@@ -410,15 +408,16 @@
         function filterAndSearch() {
             const q = searchInput.value.trim().toLowerCase();
             
-            let filtered = matches.slice().reverse(); // Maçları ters çevir (en yeni üste) ve kopyala
+            // Sadece yayınlanmış maçları al
+            let filtered = matches.filter(m => !m.isDraft).slice().reverse(); // Maçları ters çevir (en yeni üste) ve kopyala
             
             // Eğer arama kutusunda yazı varsa, sadece arama sonucunu göster
             if (q) {
                  filtered = filtered.filter(m => 
-                    m.title.toLowerCase().includes(q) || 
-                    m.team_1.toLowerCase().includes(q) || 
-                    m.team_2.toLowerCase().includes(q)
-                );
+                     m.title.toLowerCase().includes(q) || 
+                     m.team_1.toLowerCase().includes(q) || 
+                     m.team_2.toLowerCase().includes(q)
+                 );
             }
             
             // Menüden filtre seçiliyse, filtrele
