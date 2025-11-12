@@ -56,7 +56,6 @@
             padding-left: 10px;
         }
         .content {
-            /* PC DAHİL TÜM EKRANLARDA MARJİN YOK, TAM GENİŞLİK */
             margin-left: 0; 
             padding: 40px;
             flex-grow: 1;
@@ -67,13 +66,11 @@
             align-items: center;
             margin-bottom: 40px;
         }
-        /* ÜÇ YATAY ÇİZGİ BUTONU İÇİN CSS */
         #menu-toggle {
             display: block; 
             background: none; 
             border: none; 
             color: #FFC300; 
-            /* İKON BÜYÜKLÜĞÜ */
             font-size: 28px; 
             cursor: pointer;
             padding: 0;
@@ -145,8 +142,9 @@
             cursor: pointer;
             transition: background-color 0.2s;
         }
+        /* İSTENEN DEĞİŞİKLİK: HOVER (Mouse üstüne gelince) RENGİNİN YEŞİL OLMASI */
         .download-button:hover {
-            background-color: #FFD700; 
+            background-color: #4CAF50; /* Yeşil */
         }
         .footer {
             margin-top: 50px;
@@ -373,14 +371,13 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // EKSİK TAKIMLAR İÇİN YER TUTUCU MAÇLAR (FİLTRENİN DOĞRU ÇALIŞMASI İÇİN)
-            // Not: Maç verisi yoksa, filtreleme sonucu 'Maç bulunamadı' gösterecektir.
+            // EKSİK TAKIMLAR İÇİN YER TUTUCU MAÇLAR (Görünmeyecek, sadece filtreleme için var)
             // ------------------------------------------
             {
                 id: 'fenerbahce-dummy-1',
                 title: 'Fenerbahçe Maçı (Örnek)',
                 date: '2024-01-01',
-                cover: 'https://via.placeholder.com/300x180/FFC300/000000?text=F+B+M', 
+                cover: '#', 
                 driveLink: '#',
                 team_1: 'Fenerbahçe',
                 team_2: 'Rakip',
@@ -390,7 +387,7 @@
                 id: 'besiktas-dummy-1',
                 title: 'Beşiktaş Maçı (Örnek)',
                 date: '2024-01-01',
-                cover: 'https://via.placeholder.com/300x180/121212/FFFFFF?text=B+J+K', 
+                cover: '#', 
                 driveLink: '#',
                 team_1: 'Beşiktaş',
                 team_2: 'Rakip',
@@ -400,7 +397,7 @@
                 id: 'samsun-dummy-1',
                 title: 'Samsunspor Maçı (Örnek)',
                 date: '2024-01-01',
-                cover: 'https://via.placeholder.com/300x180/D50000/FFFFFF?text=SAMSUN', 
+                cover: '#', 
                 driveLink: '#',
                 team_1: 'Samsunspor',
                 team_2: 'Rakip',
@@ -442,28 +439,24 @@
             container.innerHTML = '';
             contentTitle.textContent = title;
 
-            if (title === 'Son Yüklenenler') {
-                // Sadece gerçek maçları alıp tarihe göre sırala
-                const realMatches = filteredMatches.filter(m => m.driveLink !== '#');
-                realMatches.sort((a, b) => new Date(b.date) - new Date(a.date));
-                filteredMatches = realMatches.slice(0, 8);
-            }
+            // Gerçek maçları bul
+            const realMatches = filteredMatches.filter(m => m.driveLink !== '#');
             
-            // Filtreleme sonucu sadece yer tutucu maçlar kalırsa, "Maç bulunamadı" göster
-            const actualResults = filteredMatches.filter(m => m.driveLink !== '#');
+            // Sıralama
+            if (title === 'Son Yüklenenler' || title === 'Tüm Maçlar') {
+                realMatches.sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
 
-            if (actualResults.length === 0 && title !== 'Son Yüklenenler' && title.includes('Maçları')) {
-                // Eğer Takım Maçları kategorisi seçiliyse ve sonuç yoksa
-                container.innerHTML = '<p style="color: #666; font-size: 18px; padding-top: 50px;">Seçtiğin takım için henüz maç eklenmedi.</p>';
-            } else if (filteredMatches.length === 0) {
-                 container.innerHTML = '<p style="color: #666;">Bu kriterlere uygun maç bulunamadı.</p>';
+            // 'Son Yüklenenler' için sadece ilk 8 taneyi al
+            let matchesToDisplay = (title === 'Son Yüklenenler') ? realMatches.slice(0, 8) : realMatches;
+
+            // Sonuç Kontrolü
+            if (matchesToDisplay.length === 0) {
+                container.innerHTML = `<p style="color: #666; font-size: 18px; padding-top: 50px;">${title.includes('Maçları') ? 'Seçtiğin takım için henüz maç eklenmedi.' : 'Bu kriterlere uygun maç bulunamadı.'}</p>`;
             } 
             else {
-                filteredMatches.forEach(match => {
-                    // Yer tutucu (dummy) maçları gösterme
-                    if (match.driveLink !== '#') {
-                       container.appendChild(createMatchCard(match));
-                    }
+                matchesToDisplay.forEach(match => {
+                    container.appendChild(createMatchCard(match));
                 });
             }
         }
@@ -480,21 +473,16 @@
                 let filteredList = [...matches];
                 let title = this.textContent;
 
-                if (filterType === 'all') {
-                    title = 'Tüm Maçlar';
-                    filteredList.sort((a, b) => new Date(b.date) - new Date(a.date));
-                } else if (filterType === 'latest') {
-                    title = 'Son Yüklenenler';
-                } else {
+                if (filterType !== 'all' && filterType !== 'latest') {
+                    // Takım filtrelemesi (Hem takım 1 hem takım 2'de ara)
                     filteredList = matches.filter(match => 
                         match.team_1 === filterType || match.team_2 === filterType
                     );
-                    filteredList.sort((a, b) => new Date(b.date) - new Date(a.date));
                 }
 
                 renderMatches(filteredList, title);
                 
-                // Menü tıklandığında menüyü kapat (UX iyileştirmesi)
+                // Menü tıklandığında menüyü kapat 
                 if (sidebar.classList.contains('open')) {
                     sidebar.classList.remove('open');
                 }
@@ -509,14 +497,14 @@
                 match.team_1.toLowerCase().includes(searchTerm) ||
                 match.team_2.toLowerCase().includes(searchTerm) ||
                 match.league.toLowerCase().includes(searchTerm)) &&
-                match.driveLink !== '#' // Yer tutucu maçları aramada da gösterme
+                match.driveLink !== '#' 
             );
             renderMatches(filteredList, `Arama Sonuçları: "${this.value}"`);
             
             navLinks.forEach(l => l.classList.remove('active'));
         });
 
-        // MENÜ AÇMA/KAPAMA LOGİĞİ (PC Dahil Tüm Ekranlar)
+        // MENÜ AÇMA/KAPAMA LOGİĞİ 
         const menuToggle = document.getElementById('menu-toggle');
         if (menuToggle && sidebar) {
             menuToggle.addEventListener('click', function() {
