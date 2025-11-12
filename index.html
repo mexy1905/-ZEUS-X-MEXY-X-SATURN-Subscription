@@ -6,7 +6,7 @@
     <title>MEXY ARCHIVE</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico"> 
     <style>
-        /* CSS Başlangıcı */
+        /* CSS Başlangıcı - Vurgu Rengi #DC3545 (KIRMIZI) */
         body {
             font-family: Arial, sans-serif;
             background-color: #121212;
@@ -35,7 +35,7 @@
         .logo {
             font-size: 24px;
             font-weight: bold;
-            color: #FFC300; 
+            color: #DC3545; /* GÜNCEL RENK: KIRMIZI */
             margin-bottom: 30px;
             text-align: center;
         }
@@ -50,7 +50,7 @@
         }
         .nav-link:hover, .nav-link.active {
             background-color: #333;
-            color: #FFC300; 
+            color: #DC3545; /* GÜNCEL RENK: KIRMIZI */
             padding-left: 10px;
         }
         .content {
@@ -68,7 +68,7 @@
             display: block; 
             background: none; 
             border: none; 
-            color: #FFC300; 
+            color: #DC3545; /* GÜNCEL RENK: KIRMIZI */
             font-size: 28px; 
             cursor: pointer;
             padding: 0;
@@ -119,7 +119,7 @@
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 5px;
-            color: #FFC300; 
+            color: #DC3545; /* GÜNCEL RENK: KIRMIZI */
         }
         .match-meta {
             font-size: 14px;
@@ -130,7 +130,7 @@
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #FFC300; 
+            background-color: #DC3545; /* GÜNCEL RENK: KIRMIZI */
             color: #121212;
             text-align: center;
             text-decoration: none;
@@ -141,7 +141,7 @@
             transition: background-color 0.2s;
         }
         .download-button:hover {
-            background-color: #4CAF50; 
+            background-color: #4CAF50; /* Hover rengi hala yeşil */
         }
         .footer {
             margin-top: 50px;
@@ -169,10 +169,15 @@
              white-space: nowrap;
         }
         .footer-links-area a:hover {
-            color: #4CAF50 !important; 
+            color: #DC3545 !important; /* GÜNCEL RENK: KIRMIZI */
         }
         .link-item {
             padding: 0 15px; 
+        }
+        .link-item span {
+            color: #DC3545; /* İletişim Başlığı GÜNCEL RENK: KIRMIZI */
+            font-weight: bold; 
+            margin-right: 10px;
         }
         /* Mobil uyum: Sadece kanal linki kaldığı için ayırıcı ve diğer mobil kurallar basitleştirildi. */
         @media (max-width: 600px) {
@@ -211,7 +216,7 @@
         <div id="nav-all" class="nav-link" data-filter="all">DUYURULAR</div>
         <div id="nav-latest" class="nav-link active" data-filter="latest">Son Yüklenenler</div>
         
-        <div class="nav-link" style="margin-top: 20px; font-weight: bold; color: #FFC300;">Takımlar</div>
+        <div class="nav-link" style="margin-top: 20px; font-weight: bold; color: #DC3545;">Takımlar</div>
         
         <div class="nav-link team-link" data-filter="Galatasaray">Galatasaray Maçları</div>
         <div class="nav-link team-link" data-filter="Fenerbahçe">Fenerbahçe Maçları</div>
@@ -231,26 +236,29 @@
             </div>
         </div>
 
+        <img id="section-cover-image" src="" alt="Bölüm Kapağı" style="width: 100%; height: 250px; object-fit: cover; margin-bottom: 30px; display: none;">
+
         <div class="match-grid" id="match-container">
             </div>
 
         <div id="announcement-container" style="display: none; padding: 20px; text-align: center;">
-            <h2 style="color: #FFC300; border-bottom: 2px solid #333; padding-bottom: 10px;">MEXY ARCHIVE'A HOŞ GELDİN!</h2>
+            <h2 style="color: #DC3545; border-bottom: 2px solid #333; padding-bottom: 10px;">MEXY ARCHIVE'A HOŞ GELDİN!</h2>
             
             <p style="font-size: 16px; line-height: 1.6; margin-top: 20px;">
-                **Bu site, Süper Lig'de oynanan maçları sizlere ücretsiz olarak indirmenize olanak tanır.**<br><br>
+                **Bu site, Trendyol Süper Lig'de oynanan maçları sizlere ücretsiz olarak indirmenize olanak tanır.**<br><br>
+                Amacımız, kaliteli ve kesintisiz arşiv içeriğini en hızlı şekilde sunmaktır.
             </p>
             
             <div style="max-width: 400px; margin: 0 auto; text-align: left;">
                 <p style="font-weight: bold; margin-top: 20px;">Nasıl Gezinilir?</p>
                 <ul>
-                    <li>**Son Yüklenenler:** Kısmında En Son Yüklenen Maçları Bulabilirsiniz.</li>
-                    <li>**Takımlar Kategorisi:** İstediğin takımın maçlarını hızlıca filtrele.</li>
+                    <li>**Son Yüklenenler:** En güncel paylaşımlar hemen burada.</li>
+                    <li>**Takımlar:** İstediğin takımın maçlarını hızlıca filtrele.</li>
                 </ul>
             </div>
             
             <p style="font-size: 16px; line-height: 1.6; margin-top: 10px;">
-                Tüm maçlar Drive üzerinden indirilebilir durumdadır. İyi seyirler!
+                Tüm maçlar Drive linki üzerinden indirilebilir durumdadır. İyi seyirler!
             </p>
             
             <p style="margin-top: 30px; color: #A0A0A0; font-style: italic;">
@@ -262,208 +270,19 @@
         <div class="footer">
             <div class="footer-links-area">
                 <div class="link-item">
-                    <span style="color: #FFC300; font-weight: bold; margin-right: 10px;">İletişim:</span>
+                    <span style="color: #DC3545; font-weight: bold; margin-right: 10px;">İletişim:</span>
                     <a href="https://t.me/+gUBjnG1woGA0NWFk" target="_blank">Telegram</a>
                 </div>
             </div>
             
             <div style="margin-top: 10px;">
-                &copy; 2025 Mexy Archive •
+                &copy; 2024 Mexy Archive • Tüm hakları saklıdır.
             </div>
         </div>
     </div>
 
     <script>
         // JavaScript Başlangıcı
-
-        // Maç Verileri
-        const matches = [
-            // ------------------------------------------
-            // 1. KARAGÜMRÜK 
-            // ------------------------------------------
-            {
-                id: 'gs-karagumruk-2025-08-15',
-                title: 'Galatasaray 3 - 0 Karagümrük',
-                date: '2025-08-15',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/C2soc-GmHyzodYnH_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1MhvDIMRIQKIeRIMSqHnvwa--EmXctbXx/view?usp=sharing',
-                team_1: 'Galatasaray',
-                team_2: 'Fatih Karagümrük',
-                league: 'Süper Lig'
-            },
-            // ------------------------------------------
-            // 2. GAZİANTEP 
-            // ------------------------------------------
-            {
-                id: 'gaziantep-gs-2025-08-22',
-                title: 'Gaziantep 0 - 3 Galatasaray',
-                date: '2025-08-22',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/hLxN91NQSRXM4Ojv_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1EBxegSf02_LLt0ElxMTAhjaUQ_2w3NUS/view?usp=sharing',
-                team_1: 'Gaziantep',
-                team_2: 'Galatasaray',
-                league: 'Süper Lig'
-            },
-            // ------------------------------------------
-            // 3. KAYSERİSPOR 
-            // ------------------------------------------
-            {
-                id: 'kayserispor-gs-2025-08-24',
-                title: 'Kayserispor 0 - 4 Galatasaray',
-                date: '2025-08-24',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/OM1L4VsIUzIjP4tG_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1gKDTADgwuXf2f8XeSArX2LZ9xNqwmP8c/view?usp=sharing',
-                team_1: 'Kayserispor',
-                team_2: 'Galatasaray',
-                league: 'Süper Lig'
-            },
-            
-            // ------------------------------------------
-            // 4. RİZESPOR 
-            // ------------------------------------------
-            {
-                id: 'gs-rizespor-2025-08-30',
-                title: 'Galatasaray 3 - 1 Ç. Rizespor',
-                date: '2025-08-30',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/-3OLulW8luMcZ84N_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1yPWYS_teETQYCaF5vlyP43mEd3KB57K9/view?usp=sharing', 
-                team_1: 'Galatasaray',
-                team_2: 'Çaykur Rizespor',
-                league: 'Süper Lig' 
-            },
-            // ------------------------------------------
-            // 5. EYÜPSPOR 
-            // ------------------------------------------
-            {
-                id: 'eyupspor-gs-2025-09-13',
-                title: 'Eyüpspor 0 - 2 Galatasaray',
-                date: '2025-09-13',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/ZZwUVvfHCkBnrQMB_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/16JFBuZ3mhdsoatFcgZrvU4PwHvQTIlIX/view?usp=sharing', 
-                team_1: 'Eyüpspor',
-                team_2: 'Galatasaray',
-                league: 'Süper Lig' 
-            },
-            // ------------------------------------------
-            // 6. KONYASPOR 
-            // ------------------------------------------
-            {
-                id: 'gs-konyaspor-2025-09-22',
-                title: 'Galatasaray 3 - 1 Konyaspor',
-                date: '2025-09-22',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/3zD5YXlh099rPclL_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1yPWYS_teETQYCaF5vlyP43mEd3KB57K9/view?usp=sharing',
-                team_1: 'Galatasaray',
-                team_2: 'Konyaspor',
-                league: 'Süper Lig' 
-            },
-            // ------------------------------------------
-            // 7. ALANYASPOR 
-            // ------------------------------------------
-            {
-                id: 'alanya-gs-2025-09-26',
-                title: 'Alanyaspor 0 - 1 Galatasaray',
-                date: '2025-09-26',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/LUmuwIKI6Xon1K2Z_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1JbiCOhWj5Y0G1Ei8NNgHtNzfcbvbuJTj/view?usp=sharing', 
-                team_1: 'Galatasaray',
-                team_2: 'Alanyaspor',
-                league: 'Süper Lig' 
-            },
-            // ------------------------------------------
-            // 8. BEŞİKTAŞ DERBİSİ 
-            // ------------------------------------------
-            {
-                id: 'gs-bjk-derbi-2025-10-04',
-                title: 'Galatasaray 1 - 1 Beşiktaş DERBİ',
-                date: '2025-10-04',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/6_m_TeKG0giBW1Ji_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1WI05ad1NUHPGbHEi0_FvePWfecs6Vq1L/view?usp=sharing', 
-                team_1: 'Galatasaray',
-                team_2: 'Beşiktaş',
-                league: 'Süper Lig Derbi' 
-            },
-            // ------------------------------------------
-            // 9. BAŞAKŞEHİR 
-            // ------------------------------------------
-            {
-                id: 'basaksehir-gs-2025-10-18',
-                title: 'Başakşehir 1 - 2 Galatasaray',
-                date: '2025-10-18',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/s-4EU_H2twV5-JXR_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1K_ptltnnCwujMz2BNhR6nhO8XudE1zZu/view?usp=sharing', 
-                team_1: 'Başakşehir',
-                team_2: 'Galatasaray',
-                league: 'Süper Lig' 
-            },
-            // ------------------------------------------
-            // 10. GÖZTEPE 
-            // ------------------------------------------
-            {
-                id: 'gs-goztepe-2025-10-26',
-                title: 'Galatasaray 3 - 1 Göztepe',
-                date: '2025-10-26',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/n1pCwaf60bDKKPUs_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1j94TIN2Lq66QF2kc57Lrj2yrhy-tNheF/view?usp=sharing', 
-                team_1: 'Galatasaray',
-                team_2: 'Göztepe',
-                league: 'Süper Lig' 
-            },
-            // ------------------------------------------
-            // 11. TRABZONSPOR DERBİSİ 
-            // ------------------------------------------
-            {
-                id: 'gs-ts-derbi-2025-11-01',
-                title: 'Galatasaray 0 - 0 Trabzonspor DERBİ',
-                date: '2025-11-01',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/ttVAh1Uu-W57FR48_768x432.jpg', 
-                driveLink: 'https://drive.google.com/file/d/1SPARX5gqHl0djZp33GkDSgVdsR0O9pIl/view?usp=sharing', 
-                team_1: 'Galatasaray',
-                team_2: 'Trabzonspor',
-                league: 'Süper Lig Derbi' 
-            },
-            // ------------------------------------------
-            // 12. KOCAELİSPOR 
-            // ------------------------------------------
-            {
-                id: 'kocaeli-gs-2025-11-09',
-                title: 'Kocaelispor 1 - 0 Galatasaray', 
-                date: '2025-11-09', 
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/nYPi6k_cWpTpXGiF_768x432.jpg', 
-                driveLink: 'https://drive.google.com/file/d/1GN2rNos9JAw66OiCMarvpDTuWesj7USI/view?usp=sharing', 
-                team_1: 'Kocaelispor',
-                team_2: 'Galatasaray',
-                league: 'Süper Lig' 
-            },
-        // ------------------------------------------
-            // 13. FENERBAHÇE - KAYSERİSPOR (LİNK GÜNCELLENDİ)
-            // ------------------------------------------
-            {
-                id: 'fb-kayserispor-2025-11-09',
-                title: 'Fenerbahçe 4 - 2 Kayserispor', 
-                date: '2025-11-09', 
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/pGxl1RyicKQ1DMdD_768x432.jpg', 
-                driveLink: 'https://drive.google.com/file/d/1kZ6tgDJ6wV4qgCnaRObQdcV8Lcg6Aukk/view?usp=sharing', // BU SATIR GÜNCELLENDİ
-                team_1: 'Fenerbahçe',
-                team_2: 'Kayserispor',
-                league: 'Süper Lig' 
-            },
-        , // <-- Bu virgül, önceki maçın bitiminden sonra olmalı!
-            // ------------------------------------------
-            // 14. TRABZONSPOR - KOCAELİSPOR
-            // ------------------------------------------
-            {
-                id: 'ts-kocaeli-2025-08-11',
-                title: 'Trabzonspor 1 - 0 Kocaelispor',
-                date: '2025-08-11', 
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/CjzD_10A0Udps5Sl_768x432.jpg', 
-                driveLink: 'https://drive.google.com/file/d/1aY2uTVfVDlPIg1suzfQxwFXxQr2GlHEq/view?usp=sharing',
-                team_1: 'Trabzonspor',
-                team_2: 'Kocaelispor',
-                league: 'Süper Lig'
-            }
-        ];
-    
 
         // Tarih Formatlama Fonksiyonu
         function formatDate(dateString) {
@@ -497,9 +316,26 @@
             const container = document.getElementById('match-container');
             const contentTitle = document.getElementById('content-title');
             const announcement = document.getElementById('announcement-container'); 
+            const sectionCover = document.getElementById('section-cover-image'); 
             
+            const activeLink = document.querySelector('.nav-link.active');
+            const filterType = activeLink ? activeLink.dataset.filter : 'latest'; 
+
             container.innerHTML = '';
             announcement.style.display = 'none'; 
+            sectionCover.style.display = 'none'; // Varsayılan: Görseli Gizle
+
+            // Takımların Sekme Kapağı Görsel Linkleri
+            // BUNLARI GERÇEK GÖRSEL LİNKLERİYLE DEĞİŞTİRMELİSİNİZ!
+            const teamCovers = {
+                'Galatasaray': 'LINK_GALATASARAY_KAPAK_GÖRSELİ', 
+                'Fenerbahçe': 'LINK_FENERBAHÇE_KAPAK_GÖRSELİ',   
+                'Beşiktaş': 'LINK_BEŞİKTAŞ_KAPAK_GÖRSELİ',       
+                'Trabzonspor': 'LINK_TRABZONSPOR_KAPAK_GÖRSELİ', 
+                'Göztepe': 'LINK_GÖZTEPE_KAPAK_GÖRSELİ',         
+                'Samsunspor': 'LINK_SAMSUNSPOR_KAPAK_GÖRSELİ'   
+            };
+
 
             if (title === 'DUYURULAR') {
                 contentTitle.textContent = title;
@@ -508,6 +344,14 @@
             }
             
             contentTitle.textContent = title;
+
+            // Kapak Görselini Gösterme Mantığı
+            if (teamCovers[filterType]) {
+                 sectionCover.src = teamCovers[filterType];
+                 sectionCover.style.display = 'block';
+                 sectionCover.alt = title.replace(' Maçları', '') + " Kapak Görseli";
+            }
+
 
             // Gerçek maçları ve yer tutucuları ayır
             const realMatches = filteredMatches.filter(m => m.driveLink !== '#');
@@ -605,6 +449,304 @@
             document.getElementById('nav-latest').classList.add('active');
             renderMatches(latestMatches, 'Son Yüklenenler');
         });
+
+        // Maç Verileri
+        const matches = [
+            // ------------------------------------------
+            // 1. KARAGÜMRÜK 
+            // ------------------------------------------
+            {
+                id: 'gs-karagumruk-2025-08-15',
+                title: 'Galatasaray 3 - 0 Karagümrük',
+                date: '2025-08-15',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/C2soc-GmHyzodYnH_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/1MhvDIMRIQKIeRIMSqHnvwa--EmXctbXx/view?usp=sharing',
+                team_1: 'Galatasaray',
+                team_2: 'Fatih Karagümrük',
+                league: 'Süper Lig'
+            },
+            // ------------------------------------------
+            // 2. GAZİANTEP 
+            // ------------------------------------------
+            {
+                id: 'gaziantep-gs-2025-08-22',
+                title: 'Gaziantep 0 - 3 Galatasaray',
+                date: '2025-08-22',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/hLxN91NQSRXM4Ojv_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/1EBxegSf02_LLt0ElxMTAhjaUQ_2w3NUS/view?usp=sharing',
+                team_1: 'Gaziantep',
+                team_2: 'Galatasaray',
+                league: 'Süper Lig'
+            },
+            // ------------------------------------------
+            // 3. KAYSERİSPOR 
+            // ------------------------------------------
+            {
+                id: 'kayserispor-gs-2025-08-24',
+                title: 'Kayserispor 0 - 4 Galatasaray',
+                date: '2025-08-24',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/OM1L4VsIUzIjP4tG_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/1gKDTADgwuXf2f8XeSArX2LZ9xNqwmP8c/view?usp=sharing',
+                team_1: 'Kayserispor',
+                team_2: 'Galatasaray',
+                league: 'Süper Lig'
+            },
+            
+            // ------------------------------------------
+            // 4. RİZESPOR 
+            // ------------------------------------------
+            {
+                id: 'gs-rizespor-2025-08-30',
+                title: 'Galatasaray 3 - 1 Ç. Rizespor',
+                date: '2025-08-30',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/-3OLulW8luMcZ84N_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/1yPWYS_teETQYCaF5vlyP43mEd3KB57K9/view?usp=sharing', 
+                team_1: 'Galatasaray',
+                team_2: 'Çaykur Rizespor',
+                league: 'Süper Lig' 
+            },
+            // ------------------------------------------
+            // 5. EYÜPSPOR 
+            // ------------------------------------------
+            {
+                id: 'eyupspor-gs-2025-09-13',
+                title: 'Eyüpspor 0 - 2 Galatasaray',
+                date: '2025-09-13',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/ZZwUVvfHCkBnrQMB_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/16JFBuZ3mhdsoatFcgZrvU4PwHvQTIlIX/view?usp=sharing', 
+                team_1: 'Eyüpspor',
+                team_2: 'Galatasaray',
+                league: 'Süper Lig' 
+            },
+            // ------------------------------------------
+            // 6. KONYASPOR 
+            // ------------------------------------------
+            {
+                id: 'gs-konyaspor-2025-09-22',
+                title: 'Galatasaray 3 - 1 Konyaspor',
+                date: '2025-09-22',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/3zD5YXlh099rPclL_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/1yPWYS_teETQYCaF5vlyP43mEd3KB57K9/view?usp=sharing',
+                team_1: 'Galatasaray',
+                team_2: 'Konyaspor',
+                league: 'Süper Lig' 
+            },
+            // ------------------------------------------
+            // 7. ALANYASPOR 
+            // ------------------------------------------
+            {
+                id: 'alanya-gs-2025-09-26',
+                title: 'Alanyaspor 0 - 1 Galatasaray',
+                date: '2025-09-26',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/LUmuwIKI6Xon1K2Z_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/1JbiCOhWj5Y0G1Ei8NNgHtNzfcbvbuJTj/view?usp=sharing', 
+                team_1: 'Alanyaspor',
+                team_2: 'Galatasaray',
+                league: 'Süper Lig' 
+            },
+            // ------------------------------------------
+            // 8. BEŞİKTAŞ DERBİSİ 
+            // ------------------------------------------
+            {
+                id: 'gs-bjk-derbi-2025-10-04',
+                title: 'Galatasaray 1 - 1 Beşiktaş DERBİ',
+                date: '2025-10-04',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/6_m_TeKG0giBW1Ji_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/1WI05ad1NUHPGbHEi0_FvePWfecs6Vq1L/view?usp=sharing', 
+                team_1: 'Galatasaray',
+                team_2: 'Beşiktaş',
+                league: 'Süper Lig Derbi' 
+            },
+            // ------------------------------------------
+            // 9. BAŞAKŞEHİR 
+            // ------------------------------------------
+            {
+                id: 'basaksehir-gs-2025-10-18',
+                title: 'Başakşehir 1 - 2 Galatasaray',
+                date: '2025-10-18',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/s-4EU_H2twV5-JXR_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/1K_ptltnnCwujMz2BNhR6nhO8XudE1zZu/view?usp=sharing', 
+                team_1: 'Başakşehir',
+                team_2: 'Galatasaray',
+                league: 'Süper Lig' 
+            },
+            // ------------------------------------------
+            // 10. GÖZTEPE 
+            // ------------------------------------------
+            {
+                id: 'gs-goztepe-2025-10-26',
+                title: 'Galatasaray 3 - 1 Göztepe',
+                date: '2025-10-26',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/n1pCwaf60bDKKPUs_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/1j94TIN2Lq66QF2kc57Lrj2yrhy-tNheF/view?usp=sharing', 
+                team_1: 'Galatasaray',
+                team_2: 'Göztepe',
+                league: 'Süper Lig' 
+            },
+            // ------------------------------------------
+            // 11. TRABZONSPOR DERBİSİ 
+            // ------------------------------------------
+            {
+                id: 'gs-ts-derbi-2025-11-01',
+                title: 'Galatasaray 0 - 0 Trabzonspor DERBİ',
+                date: '2025-11-01',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/ttVAh1Uu-W57FR48_768x432.jpg', 
+                driveLink: 'https://drive.google.com/file/d/1SPARX5gqHl0djZp33GkDSgVdsR0O9pIl/view?usp=sharing', 
+                team_1: 'Galatasaray',
+                team_2: 'Trabzonspor',
+                league: 'Süper Lig Derbi' 
+            },
+            // ------------------------------------------
+            // 12. KOCAELİSPOR 
+            // ------------------------------------------
+            {
+                id: 'kocaeli-gs-2025-11-09',
+                title: 'Kocaelispor 1 - 0 Galatasaray', 
+                date: '2025-11-09', 
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/nYPi6k_cWpTpXGiF_768x432.jpg', 
+                driveLink: 'https://drive.google.com/file/d/1GN2rNos9JAw66OiCMarvpDTuWesj7USI/view?usp=sharing', 
+                team_1: 'Kocaelispor',
+                team_2: 'Galatasaray',
+                league: 'Süper Lig' 
+            },
+            // ------------------------------------------
+            // 13. FENERBAHÇE - KAYSERİSPOR (LİNK GÜNCEL)
+            // ------------------------------------------
+            {
+                id: 'fb-kayserispor-2025-11-09',
+                title: 'Fenerbahçe 4 - 2 Kayserispor', 
+                date: '2025-11-09', 
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/pGxl1RyicKQ1DMdD_768x432.jpg', 
+                driveLink: 'https://drive.google.com/file/d/1kZ6tgDJ6wV4qgCnaRObQdcV8Lcg6Aukk/view?usp=sharing',
+                team_1: 'Fenerbahçe',
+                team_2: 'Kayserispor',
+                league: 'Süper Lig' 
+            },
+            
+            // ------------------------------------------
+            // 14. TRABZONSPOR - KOCAELİSPOR
+            // ------------------------------------------
+            {
+                id: 'ts-kocaeli-2025-08-11',
+                title: 'Trabzonspor 1 - 0 Kocaelispor',
+                date: '2025-08-11', 
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/CjzD_10A0Udps5Sl_768x432.jpg', 
+                driveLink: 'https://drive.google.com/file/d/1aY2uTVfVDlPIg1suzfQxwFXxQr2GlHEq/view?usp=sharing',
+                team_1: 'Trabzonspor',
+                team_2: 'Kocaelispor',
+                league: 'Süper Lig'
+            }, 
+            // ------------------------------------------
+            // 15. KASIMPAŞA - TRABZONSPOR
+            // ------------------------------------------
+            {
+                id: 'kasimpasa-ts-2025-08-18',
+                title: 'Kasımpaşa 0 - 1 Trabzonspor',
+                date: '2025-08-18', 
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/6uiq46BDPXPd_zmv_768x432.jpg', 
+                driveLink: 'https://drive.google.com/file/d/1SBzlZzrkFBF19SYAl0fDrpy7IHT2JJ5E/view?usp=sharing',
+                team_1: 'Kasımpaşa',
+                team_2: 'Trabzonspor',
+                league: 'Süper Lig'
+            },
+            // ------------------------------------------
+            // 16. TRABZONSPOR - SAMSUNSPOR
+            // ------------------------------------------
+            {
+                id: 'ts-samsun-2025-08-31',
+                title: 'Trabzonspor 1 - 1 Samsunspor',
+                date: '2025-08-31', 
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/ZPMkSyRKy1KzaFYM_768x432.jpg', 
+                driveLink: 'https://drive.google.com/file/d/1CgETGCUCSOTCFNIZ35oH7WlA8yd5nF8m/view?usp=sharing',
+                team_1: 'Trabzonspor',
+                team_2: 'Samsunspor',
+                league: 'Süper Lig'
+            },
+            // ------------------------------------------
+            // 17. TRABZONSPOR - ANTALYASPOR
+            // ------------------------------------------
+            {
+                id: 'ts-antalya-2025-08-24',
+                title: 'Trabzonspor 1 - 0 Antalyaspor',
+                date: '2025-08-24', 
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/1fS43vggPYNfr1Js_768x432.jpg', 
+                driveLink: 'https://drive.google.com/file/d/1ESLQ_cvTyZWnm8kWnz7Bdi-13TjCkAcr/view?usp=sharing',
+                team_1: 'Trabzonspor',
+                team_2: 'Antalyaspor',
+                league: 'Süper Lig'
+            },
+            // ------------------------------------------
+            // 18. TRABZONSPOR - GAZİANTEP FK
+            // ------------------------------------------
+            {
+                id: 'ts-gaziantep-2025-09-20',
+                title: 'Trabzonspor 1 - 1 Gaziantep FK',
+                date: '2025-09-20', 
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/sr1sprwDV0hK_HM2_768x432.jpg', 
+                driveLink: 'https://drive.google.com/file/d/1MsKfgnEunboUikWnxYoeF6tNOAAARmJ7/view?usp=sharing',
+                team_1: 'Trabzonspor',
+                team_2: 'Gaziantep FK',
+                league: 'Süper Lig'
+            },
+            // ------------------------------------------
+            // 19. TRABZONSPOR - ALANYASPOR
+            // ------------------------------------------
+            {
+                id: 'ts-alanya-2025-11-08',
+                title: 'Trabzonspor 1 - 1 Alanyaspor',
+                date: '2025-11-08', 
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/9vHC2UIVjUTbrnyz_768x432.jpg', 
+                driveLink: 'https://drive.google.com/file/d/1OsAEiHCh-AmCZovafTQ9heQBVrzQQDsB/view?usp=sharing',
+                team_1: 'Trabzonspor',
+                team_2: 'Alanyaspor',
+                league: 'Süper Lig'
+            },
+            // ------------------------------------------
+            // 20. TRABZONSPOR - EYÜPSPOR
+            // ------------------------------------------
+            {
+                id: 'ts-eyup-2025-10-25',
+                title: 'Trabzonspor 2 - 0 Eyüpspor',
+                date: '2025-10-25', 
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/FCWe8NGUVRtwZFHV_768x432.jpg', 
+                driveLink: 'https://drive.google.com/file/d/1uaeiHELW8a51ZvXKmQRtgv96_o6W-IoG/view?usp=sharing',
+                team_1: 'Trabzonspor',
+                team_2: 'Eyüpspor',
+                league: 'Süper Lig'
+            },
+            // ------------------------------------------
+            // 21. RİZESPOR - TRABZONSPOR
+            // ------------------------------------------
+            {
+                id: 'rize-ts-2025-10-18',
+                title: 'Rizespor 1 - 2 Trabzonspor',
+                date: '2025-10-18', 
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/drtrvziJ0tzBUt9A_768x432.jpg', 
+                driveLink: 'https://drive.google.com/file/d/1_LUIZ7AdbCoMMwl07gYUeOoqvsBFM7tg/view?usp=sharing',
+                team_1: 'Rizespor',
+                team_2: 'Trabzonspor',
+                league: 'Süper Lig'
+            },
+            // ------------------------------------------
+            // 22. KARAGÜMRÜK - TRABZONSPOR
+            // ------------------------------------------
+            {
+                id: 'karagumruk-ts-2025-09-27',
+                title: 'Karagümrük 3 - 4 Trabzonspor',
+                date: '2025-09-27', 
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/bOn973T0WJVoxkPK_768x432.jpg', 
+                driveLink: 'https://drive.google.com/file/d/18HuEc7S-2svfW3QMFyAWCyIH6krZvhPc/view?usp=sharing',
+                team_1: 'Karagümrük',
+                team_2: 'Trabzonspor',
+                league: 'Süper Lig'
+            },
+            // ------------------------------------------
+            // YER TUTUCU MAÇLAR 
+            // ------------------------------------------
+            { id: 'fenerbahce-dummy-1', title: 'Fenerbahçe Maçı (Örnek)', date: '2024-01-01', cover: 'LINK_FENERBAHÇE_KAPAK_GÖRSELİ', driveLink: '#', team_1: 'Fenerbahçe', team_2: 'Rakip', league: 'Süper Lig' },
+            { id: 'besiktas-dummy-1', title: 'Beşiktaş Maçı (Örnek)', date: '2024-01-01', cover: 'LINK_BEŞİKTAŞ_KAPAK_GÖRSELİ', driveLink: '#', team_1: 'Beşiktaş', team_2: 'Rakip', league: 'Süper Lig' },
+            { id: 'samsun-dummy-1', title: 'Samsunspor Maçı (Örnek)', date: '2024-01-01', cover: 'LINK_SAMSUNSPOR_KAPAK_GÖRSELİ', driveLink: '#', team_1: 'Samsunspor', team_2: 'Rakip', league: 'Süper Lig' }
+        ];
 
         // JavaScript Bitişi
     </script>
