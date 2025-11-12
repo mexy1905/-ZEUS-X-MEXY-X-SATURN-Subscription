@@ -13,7 +13,6 @@
             color: #E0E0E0;
             margin: 0;
             padding: 0;
-            display: flex;
             min-height: 100vh;
         }
         .sidebar {
@@ -26,6 +25,14 @@
             left: 0;
             height: 100%;
             overflow-y: auto;
+            z-index: 1000; 
+            /* PC DAHİL TÜM EKRANLARDA MENÜ GİZLİ BAŞLAR */
+            transform: translateX(-100%); 
+            transition: transform 0.3s ease;
+        }
+        /* MENÜ AÇILDIĞINDA */
+        .sidebar.open {
+            transform: translateX(0); 
         }
         .logo {
             font-size: 24px;
@@ -39,31 +46,45 @@
             cursor: pointer;
             color: #E0E0E0;
             text-decoration: none;
-            display: block; /* ALT ALTA SIRALAMA İÇİN KESİNLİKLE 'block' OLMALIDIR */
+            display: block; 
             border-bottom: 1px solid #333;
             transition: background-color 0.2s, color 0.2s;
         }
-        /* HOVER VE AKTİF RENGİ SARI/TURUNCUYA DÖNDÜ */
         .nav-link:hover, .nav-link.active {
             background-color: #333;
             color: #FFC300; 
             padding-left: 10px;
         }
         .content {
-            margin-left: 250px;
+            /* PC DAHİL TÜM EKRANLARDA MARJİN YOK, TAM GENİŞLİK */
+            margin-left: 0; 
             padding: 40px;
             flex-grow: 1;
+            width: 100%;
         }
         .header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
             margin-bottom: 40px;
+        }
+        /* ÜÇ NOKTA BUTONU PC DAHİL HER YERDE GÖRÜNÜR */
+        #menu-toggle {
+            display: block; 
+            background: none; 
+            border: none; 
+            color: #FFC300; 
+            font-size: 30px; 
+            cursor: pointer;
+            padding: 0;
+            margin-right: 20px;
         }
         .page-title {
             font-size: 32px;
             font-weight: bold;
             color: #FFFFFF;
+        }
+        .search-bar {
+            margin-left: auto; 
         }
         .search-bar input {
             padding: 10px;
@@ -132,28 +153,48 @@
             font-size: 12px;
             color: #666;
         }
+
+        /* Mobil/Tablet Uyumu için arama çubuğu düzenlemesi */
+        @media (max-width: 768px) {
+            .header {
+                flex-wrap: wrap; 
+            }
+            .search-bar {
+                width: 100%; 
+                margin-top: 20px;
+                margin-left: 0;
+            }
+            .search-bar input {
+                width: 100%;
+            }
+            .content {
+                padding: 20px;
+            }
+        }
         /* CSS Bitişi */
     </style>
 </head>
 <body>
 
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
         <div class="logo">MEXY ARCHIVE</div>
         
         <div id="nav-all" class="nav-link active" data-filter="all">Tüm Maçlar</div>
         <div id="nav-latest" class="nav-link" data-filter="latest">Son Yüklenenler</div>
         
         <div class="nav-link" style="margin-top: 20px; font-weight: bold; color: #FFC300;">Takımlar</div>
-        <div id="nav-gs" class="nav-link team-link" data-filter="Galatasaray">Galatasaray</div>
-        <div id="nav-fb" class="nav-link team-link" data-filter="Fenerbahçe">Fenerbahçe</div>
-        <div id="nav-bjk" class="nav-link team-link" data-filter="Beşiktaş">Beşiktaş</div>
-        <div id="nav-ts" class="nav-link team-link" data-filter="Trabzonspor">Trabzonspor</div>
-        <div id="nav-goztepe" class="nav-link team-link" data-filter="Göztepe">Göztepe</div>
-        <div id="nav-samsun" class="nav-link team-link" data-filter="Samsunspor">Samsunspor</div>
+        <div class="nav-link team-link" data-filter="Alanyaspor">Alanyaspor Maçları</div>
+        <div class="nav-link team-link" data-filter="Galatasaray">Galatasaray Maçları</div>
+        <div class="nav-link team-link" data-filter="Gaziantep">Gaziantep Maçları</div>
+        <div class="nav-link team-link" data-filter="Fatih Karagümrük">Karagümrük Maçları</div>
+        <div class="nav-link team-link" data-filter="Kayserispor">Kayserispor Maçları</div>
+        <div class="nav-link team-link" data-filter="Trabzonspor">Trabzonspor Maçları</div>
+        
     </div>
 
     <div class="content">
         <div class="header">
+            <button id="menu-toggle">&#x22EE;</button>
             <h1 class="page-title" id="content-title">Son Yüklenenler</h1>
             <div class="search-bar">
                 <input type="text" id="search-input" placeholder="Maç başlığında ara...">
@@ -174,7 +215,7 @@
         // Maç Verileri
         const matches = [
             // ------------------------------------------
-            // 1. ESKİ MAÇ: KARAGÜMRÜK (LİNKLER TAMAM)
+            // 1. KARAGÜMRÜK (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'gs-karagumruk-2025-08-15',
@@ -187,7 +228,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 2. ESKİ MAÇ: GAZİANTEP (LİNKLER TAMAM)
+            // 2. GAZİANTEP (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'gaziantep-gs-2025-08-22',
@@ -200,7 +241,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 3. ESKİ MAÇ: KAYSERİSPOR (LİNKLER TAMAM)
+            // 3. KAYSERİSPOR (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'kayserispor-gs-2025-08-24',
@@ -214,7 +255,7 @@
             },
             
             // ------------------------------------------
-            // 4. YENİ MAÇ: RİZESPOR (LİNKLER TAMAM)
+            // 4. RİZESPOR (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'gs-rizespor-2025-08-30',
@@ -227,7 +268,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 5. YENİ MAÇ: EYÜPSPOR (LİNKLER TAMAM)
+            // 5. EYÜPSPOR (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'eyupspor-gs-2025-09-13',
@@ -240,7 +281,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 6. YENİ MAÇ: KONYASPOR (LİNKLER TAMAM)
+            // 6. KONYASPOR (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'gs-konyaspor-2025-09-22',
@@ -253,7 +294,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 7. YENİ MAÇ: ALANYASPOR (LİNKLER TAMAM)
+            // 7. ALANYASPOR (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'alanya-gs-2025-09-26',
@@ -266,7 +307,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 8. YENİ MAÇ: BEŞİKTAŞ DERBİSİ (LİNKLER TAMAM)
+            // 8. BEŞİKTAŞ DERBİSİ (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'gs-bjk-derbi-2025-10-04',
@@ -279,7 +320,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 9. YENİ MAÇ: BAŞAKŞEHİR (LİNKLER TAMAM)
+            // 9. BAŞAKŞEHİR (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'basaksehir-gs-2025-10-18',
@@ -292,7 +333,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 10. YENİ MAÇ: GÖZTEPE (LİNKLER TAMAM)
+            // 10. GÖZTEPE (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'gs-goztepe-2025-10-26',
@@ -305,7 +346,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 11. YENİ MAÇ: TRABZONSPOR DERBİSİ (LİNKLER TAMAM)
+            // 11. TRABZONSPOR DERBİSİ (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'gs-ts-derbi-2025-11-01',
@@ -318,7 +359,7 @@
                 league: 'Süper Lig Derbi' 
             },
             // ------------------------------------------
-            // 12. YENİ MAÇ: KOCAELİSPOR (LİNKLER TAMAM)
+            // 12. KOCAELİSPOR (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'kocaeli-gs-2025-11-09',
@@ -364,9 +405,7 @@
             container.innerHTML = '';
             contentTitle.textContent = title;
 
-            // En son yüklenen 8 maçı 'Son Yüklenenler' için göster
             if (title === 'Son Yüklenenler') {
-                // Tarihe göre ters sırala ve sadece ilk 8'i al.
                 filteredMatches.sort((a, b) => new Date(b.date) - new Date(a.date));
                 filteredMatches = filteredMatches.slice(0, 8);
             }
@@ -381,29 +420,23 @@
         }
 
         // Navigasyon ve Filtreleme
+        const sidebar = document.getElementById('sidebar');
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
-                // Active sınıfını temizle
                 navLinks.forEach(l => l.classList.remove('active'));
-                
-                // Active sınıfını ekle
                 this.classList.add('active');
 
                 const filterType = this.dataset.filter;
                 let filteredList = [...matches];
                 let title = this.textContent;
 
-                // Filtreleme mantığı
                 if (filterType === 'all') {
                     title = 'Tüm Maçlar';
-                    // Tüm maçları tarihe göre ters sırala
                     filteredList.sort((a, b) => new Date(b.date) - new Date(a.date));
                 } else if (filterType === 'latest') {
                     title = 'Son Yüklenenler';
-                    // İlk 8 maç renderMatches içinde halledilecek
                 } else {
-                    // Takım filtrelemesi
                     filteredList = matches.filter(match => 
                         match.team_1 === filterType || match.team_2 === filterType
                     );
@@ -411,6 +444,11 @@
                 }
 
                 renderMatches(filteredList, title);
+                
+                // Menü tıklandığında menüyü kapat (UX iyileştirmesi)
+                if (sidebar.classList.contains('open')) {
+                    sidebar.classList.remove('open');
+                }
             });
         });
 
@@ -425,15 +463,20 @@
             );
             renderMatches(filteredList, `Arama Sonuçları: "${this.value}"`);
             
-            // Sidebar'daki aktifliği kaldır
             navLinks.forEach(l => l.classList.remove('active'));
         });
 
+        // MENÜ AÇMA/KAPAMA LOGİĞİ (PC Dahil Tüm Ekranlar)
+        const menuToggle = document.getElementById('menu-toggle');
+        if (menuToggle && sidebar) {
+            menuToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('open');
+            });
+        }
 
         // Sayfa yüklendiğinde varsayılan olarak 'Son Yüklenenler'i göster
         document.addEventListener('DOMContentLoaded', () => {
-            const latestMatches = [...matches]; // Kopyasını al
-            // Varsayılan olarak 'Son Yüklenenler' linkini aktif yap
+            const latestMatches = [...matches]; 
             document.getElementById('nav-all').classList.remove('active');
             document.getElementById('nav-latest').classList.add('active');
             renderMatches(latestMatches, 'Son Yüklenenler');
