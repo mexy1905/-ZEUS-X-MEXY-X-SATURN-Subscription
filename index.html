@@ -1,457 +1,412 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEXY ARCHIVE</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
-    <style>
-        :root{
-            --bg:#0b0c0f;
-            --card:#0f1114;
-            --muted:#9aa0a6;
-            --accent:#ffb703;
-            --glass: rgba(255,255,255,0.03);
-            --radius:14px;
-            --maxw:1100px;
-            --sidebar-width: 250px;
-        }
-        *{box-sizing:border-box}
-        html,body{height:100%; overflow-x: hidden;}
-        body{
-            margin:0;
-            font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial;
-            background: radial-gradient(1200px 600px at 10% 10%, rgba(255,183,3,0.03), transparent),
-                        linear-gradient(180deg,#08090b 0%,var(--bg) 100%);
-            color:#e6e9ee;
-            -webkit-font-smoothing:antialiased;
-            -moz-osx-font-smoothing:grayscale;
-            padding:0;
-            display:flex;justify-content:center;
-            transition: transform 0.3s ease;
-        }
-        body.menu-open {
-            transform: translateX(var(--sidebar-width));
-        }
-
-        .wrap{width:100%;max-width:var(--maxw); padding:32px 20px;}
-        
-        /* HEADER ve HAMBURGER İKONU */
-        header{
-            display:flex;
-            flex-direction: column;
-            margin-bottom:22px;
-        }
-        .header-top{
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            margin-bottom: 20px;
-            gap: 10px;
-        }
-        .menu-toggle {
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 8px;
-            background: var(--glass);
-            border: 1px solid rgba(255,255,255,0.05);
+    <link rel="icon" type="image/x-icon" href="favicon.ico"> <style>
+        /* CSS Başlangıcı */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #E0E0E0;
+            margin: 0;
+            padding: 0;
             display: flex;
+            min-height: 100vh;
         }
-        .menu-toggle .material-symbols-outlined {
-            font-size: 28px;
-            color: var(--accent);
-        }
-        .brand{display:flex;gap:12px;align-items:center; flex-grow: 1;}
-        .logo{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#ff6b6b);display:flex;align-items:center;justify-content:center;font-weight:700;color:#0b0c0f; font-size: 18px;}
-        h1{font-size:20px;margin:0}
-        p.lead{margin:0;color:var(--muted);font-size:13px}
-        
-        /* ARAMA KUTUSU */
-        .controls{
-            display: flex;
-            justify-content: flex-end;
-        }
-        .search{
-            background:var(--glass);
-            border:1px solid rgba(255,255,255,0.03);
-            padding:10px 12px;
-            border-radius:10px;
-            color:var(--muted);
-            min-width:180px;
-        }
-
-        /* KENAR ÇUBUĞU (SIDEBAR) */
         .sidebar {
+            width: 250px;
+            background-color: #1E1E1E;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
             position: fixed;
             top: 0;
-            left: calc( -1 * var(--sidebar-width) );
-            height: 100%;
-            width: var(--sidebar-width);
-            background: #111;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.5);
-            z-index: 100;
-            padding: 20px 15px;
-            transition: left 0.3s ease;
-            overflow-y: auto;
-            border-right: 1px solid rgba(255,255,255,0.05);
-        }
-        .sidebar.open {
             left: 0;
+            height: 100%;
+            overflow-y: auto;
         }
-        .sidebar h3 {
-            color: var(--accent);
-            text-transform: uppercase;
-            font-size: 14px;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            padding-left: 5px;
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FFC300;
+            margin-bottom: 30px;
+            text-align: center;
         }
-        .sidebar a {
-            display: block;
-            padding: 10px 10px;
+        .nav-link {
+            padding: 10px 0;
+            cursor: pointer;
+            color: #E0E0E0;
             text-decoration: none;
-            color: #e6e9ee;
-            border-radius: 8px;
-            margin-bottom: 4px;
-            font-size: 15px;
-            transition: background 0.2s;
-            cursor: pointer;
+            display: block;
+            border-bottom: 1px solid #333;
+            transition: background-color 0.2s, color 0.2s;
         }
-        .sidebar a:hover, .sidebar a.active {
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--accent);
+        .nav-link:hover, .nav-link.active {
+            background-color: #333;
+            color: #FFC300;
+            padding-left: 10px;
         }
-        .sidebar-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-            color: var(--muted);
-            font-size: 24px;
-            padding: 5px;
+        .content {
+            margin-left: 250px;
+            padding: 40px;
+            flex-grow: 1;
         }
-        /* MAÇ KARTLARI */
-        .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
-        .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;min-height:320px}
-        .cover{height:160px;background:#0b0c0f;background-size:cover;background-position:center}
-        .meta{padding:14px 14px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
-        .category{font-size:12px; color:var(--accent); font-weight: 600; text-transform: uppercase;}
-        .title{font-weight:600;font-size:15px;margin:0}
-        .date{font-size:13px;color:var(--muted)}
-        .actions{margin-top:auto}
-        .btn{
-            width:100%;padding:12px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:600;font-size:16px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+        .header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: background 0.2s ease, color 0.2s ease; /* HOVER GEÇİŞİ İÇİN EKLEDİK */
+            margin-bottom: 40px;
         }
-        .btn.download{background:var(--accent);color:#0b0c0f}
-        .btn.download:hover { /* YENİ EKLEDİĞİMİZ HOVER KURALI */
-            background: #28a745; /* Yeşil */
-            color: #fff;        /* Beyaz yazı */
+        .page-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #FFFFFF;
         }
-        .btn:active{transform:translateY(1px)}
-        .empty{padding:40px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);text-align:center;color:var(--muted)}
-        footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
-        
-        /* Başlık Stili */
-        h2.main-title {
-            font-size: 24px;
-            color: #e6e9ee;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 10px;
-            margin-top: 0;
-            margin-bottom: 20px;
+        .search-bar input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #E0E0E0;
+            width: 300px;
         }
-
-        /* Overlay */
-        .overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 50;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+        .match-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
         }
-        .overlay.active {
-            opacity: 1;
-            pointer-events: auto;
+        .match-card {
+            background-color: #1E1E1E;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
         }
-        @media (max-width:600px){
-            .cover{height:120px}
-            .sidebar-close { display: none;}
-            h2.main-title { font-size: 20px; }
+        .match-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
         }
+        .match-cover {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        .match-info {
+            padding: 15px;
+        }
+        .match-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #FFC300;
+        }
+        .match-meta {
+            font-size: 14px;
+            color: #A0A0A0;
+            margin-bottom: 10px;
+        }
+        .download-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #FFC300;
+            color: #121212;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .download-button:hover {
+            background-color: #FFD700;
+        }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+        /* CSS Bitişi */
     </style>
 </head>
-<body id="mainBody">
-    <div id="overlay" class="overlay"></div>
+<body>
 
-    <div id="sidebar" class="sidebar">
-        <span id="closeMenu" class="sidebar-close material-symbols-outlined">close</span>
+    <div class="sidebar">
+        <div class="logo">MEXY ARCHIVE</div>
+        <div id="nav-all" class="nav-link active" data-filter="all">Tüm Maçlar</div>
+        <div id="nav-latest" class="nav-link" data-filter="latest">Son Yüklenenler</div>
         
-        <h3>Ligler ve Kupalar</h3>
-        <a class="filter-link active" data-filter="" data-group="all">Tüm Maçlar</a>
-        <div id="leagueLinks">
-            </div>
-
-        <h3>Takımlar</h3>
-        <div id="teamLinks"></div>
+        <div class="nav-link" style="margin-top: 20px; font-weight: bold; color: #FFC300;">Takımlar</div>
+        <div id="nav-gs" class="nav-link team-link" data-filter="Galatasaray">Galatasaray</div>
+        <div id="nav-fb" class="nav-link team-link" data-filter="Fenerbahçe">Fenerbahçe</div>
+        <div id="nav-bjk" class="nav-link team-link" data-filter="Beşiktaş">Beşiktaş</div>
+        <div id="nav-ts" class="nav-link team-link" data-filter="Trabzonspor">Trabzonspor</div>
+        <div id="nav-goztepe" class="nav-link team-link" data-filter="Göztepe">Göztepe</div>
+        <div id="nav-samsun" class="nav-link team-link" data-filter="Samsunspor">Samsunspor</div>
     </div>
 
-    <div class="wrap">
-        <header>
-            <div class="header-top">
-                <button id="menuToggle" class="menu-toggle" aria-label="Menüyü Aç">
-                    <span class="material-symbols-outlined">menu</span>
-                </button>
-                
-                <div class="brand">
-                    <div class="logo">M</div>
-                    <div>
-                        <h1>MEXY ARCHIVE</h1>
-                        <p class="lead">Kendi kayıtların — Hızlı erişim için soldaki menüyü kullan.</p>
-                    </div>
-                </div>
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title" id="content-title">Son Yüklenenler</h1>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Maç başlığında ara...">
+            </div>
+        </div>
+
+        <div class="match-grid" id="match-container">
             </div>
 
-            <div class="controls">
-                <input id="search" class="search" placeholder="Maç başlığında ara..." />
-            </div>
-        </header>
-
-        <main>
-            <h2 id="mainTitle" class="main-title">Son Eklenen Maçlar</h2> 
-            
-            <div id="grid" class="grid"></div>
-            <div id="empty" class="empty" style="display:none;margin-top:18px">Filtreye uygun maç bulunamadı.</div>
-        </main>
-
-        <footer>
-            © <span id="year"></span> Mexy Archive. Tüm Hakları Saklıdır.
-        </footer>
+        <div class="footer">
+            &copy; 2024 Mexy Archive • Tüm hakları saklıdır.
+        </div>
     </div>
 
     <script>
-        // MAÇ LİSTESİ: LÜTFEN SADECE BU DİZİYİ KENDİ MAÇLARINIZLA GÜNCELLEYİN!
-        const genericCover = 'https://images.unsplash.com/photo-1549476722-1d5964f9f4a1?q=80&w=1200&auto=format&fit=crop';
-        
+        // JavaScript Başlangıcı
+
+        // Maç Verileri
         const matches = [
-            // 1. TRABZONSPOR MAÇI
-            {
-                id: 'ts-alanya-2025-11-08',
-                title: 'Trabzonspor 1 - 1 Alanyaspor — Süper Lig',
-                date: '2025-11-08',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/9vHC2UIVjUTbrnyz_768x432.jpg',
-                driveLink: 'https://drive.google.com/uc?export=download&id=1tr_EPfo_Uc555FGXAdHCC5l_VOcCdZ85',
-                team_1: 'Trabzonspor',
-                team_2: 'Alanyaspor',
-                league: 'Süper Lig'
-            },
-            
-            // 2. GAZİANTEP MAÇI
-            {
-                id: 'GFK-GS',
-                title: 'Gaziantep - Galatasaray',
-                date: '2025-08-08',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/hLxN91NQSRXM4Ojv_768x432.jpg', 
-                driveLink: 'https://drive.google.com/uc?export=download&id=1EBxegSf02_LLt0ElxMTAhjaUQ_2w3NUS', 
-                team_1: 'Gaziantep',
-                team_2: 'Galatasaray',
-                league: 'Süper Lig' 
-            },
-            
-            // 3. GALATASARAY - KARAGÜMRÜK
+            // ------------------------------------------
+            // ESKİ MAÇLAR (Link/Cover Placeholder Kullanıldı)
+            // ------------------------------------------
             {
                 id: 'gs-karagumruk-2025-08-15',
-                title: 'Galatasaray 3 - 0 Karagümrük — Süper Lig (1. Hafta)',
+                title: 'Galatasaray 3 - 0 Karagümrük',
                 date: '2025-08-15',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/C2soc-GmHyzodYnH_768x432.jpg', 
-                driveLink: 'https://drive.google.com/uc?export=download&id=1MhvDIMRIQKIeRIMSqHnvwa--EmXctbXx', 
+                cover: 'LÜTFEN_BURAYA_ESKİ_KAPAK_LİNKİNİ_YAPIŞTIRIN',
+                driveLink: 'LÜTFEN_BURAYA_ESKİ_DRIVE_LİNKİNİ_YAPIŞTIRIN',
                 team_1: 'Galatasaray',
-                team_2: 'Karagümrük',
-                league: 'Süper Lig' 
+                team_2: 'Fatih Karagümrük',
+                league: 'Süper Lig'
             },
-            
-            // 4. KAYSERİSPOR MAÇI
             {
-                id: 'kayseri-gs-2025-08-24',
-                title: 'Kayserispor 0 - 4 Galatasaray — Süper Lig (3. Hafta)',
+                id: 'gaziantep-gs-2025-08-22',
+                title: 'Gaziantep 0 - 3 Galatasaray',
+                date: '2025-08-22',
+                cover: 'LÜTFEN_BURAYA_ESKİ_KAPAK_LİNKİNİ_YAPIŞTIRIN',
+                driveLink: 'LÜTFEN_BURAYA_ESKİ_DRIVE_LİNKİNİ_YAPIŞTIRIN',
+                team_1: 'Gaziantep',
+                team_2: 'Galatasaray',
+                league: 'Süper Lig'
+            },
+            {
+                id: 'kayserispor-gs-2025-08-24',
+                title: 'Kayserispor 0 - 4 Galatasaray',
                 date: '2025-08-24',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/OM1L4VsIUzIjP4tG_768x432.jpg',
-                driveLink: 'https://drive.google.com/uc?export=download&id=1gKDTADgwuXf2f8XeSArX2LZ9xNqwmP8c', 
+                cover: 'LÜTFEN_BURAYA_ESKİ_KAPAK_LİNKİNİ_YAPIŞTIRIN',
+                driveLink: 'LÜTFEN_BURAYA_ESKİ_DRIVE_LİNKİNİ_YAPIŞTIRIN',
                 team_1: 'Kayserispor',
                 team_2: 'Galatasaray',
                 league: 'Süper Lig'
+            },
+            
+            // ------------------------------------------
+            // YENİ EKLENEN 9 MAÇ (Link ve Cover Hazır)
+            // ------------------------------------------
+            {
+                id: 'gs-rizespor-2025-08-30',
+                title: 'Galatasaray 3 - 1 Ç. Rizespor',
+                date: '2025-08-30',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/-3OLulW8luMcZ84N_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/1yPWYS_teETQYCaF5vlyP43mEd3KB57K9/view?usp=sharing', 
+                team_1: 'Galatasaray',
+                team_2: 'Çaykur Rizespor',
+                league: 'Süper Lig' 
+            },
+            {
+                id: 'eyupspor-gs-2025-09-13',
+                title: 'Eyüpspor 0 - 2 Galatasaray',
+                date: '2025-09-13',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/ZZwUVvfHCkBnrQMB_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/16JFBuZ3mhdsoatFcgZrvU4PwHvQTIlIX/view?usp=sharing', 
+                team_1: 'Eyüpspor',
+                team_2: 'Galatasaray',
+                league: 'Süper Lig' 
+            },
+            {
+                id: 'gs-konyaspor-2025-09-22',
+                title: 'Galatasaray 3 - 1 Konyaspor',
+                date: '2025-09-22',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/3zD5YXlh099rPclL_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/1yPWYS_teETQYCaF5vlyP43mEd3KB57K9/view?usp=sharing',
+                team_1: 'Galatasaray',
+                team_2: 'Konyaspor',
+                league: 'Süper Lig' 
+            },
+            {
+                id: 'alanya-gs-2025-09-26',
+                title: 'Alanyaspor 0 - 1 Galatasaray',
+                date: '2025-09-26',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/LUmuwIKI6Xon1K2Z_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/1JbiCOhWj5Y0G1Ei8NNgHtNzfcbvbuJTj/view?usp=sharing', 
+                team_1: 'Alanyaspor',
+                team_2: 'Galatasaray',
+                league: 'Süper Lig' 
+            },
+            {
+                id: 'gs-bjk-derbi-2025-10-04',
+                title: 'Galatasaray 1 - 1 Beşiktaş DERBİ',
+                date: '2025-10-04',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/6_m_TeKG0giBW1Ji_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/1WI05ad1NUHPGbHEi0_FvePWfecs6Vq1L/view?usp=sharing', 
+                team_1: 'Galatasaray',
+                team_2: 'Beşiktaş',
+                league: 'Süper Lig' 
+            },
+            {
+                id: 'basaksehir-gs-2025-10-18',
+                title: 'Başakşehir 1 - 2 Galatasaray',
+                date: '2025-10-18',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/s-4EU_H2twV5-JXR_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/1K_ptltnnCwujMz2BNhR6nhO8XudE1zZu/view?usp=sharing', 
+                team_1: 'Başakşehir',
+                team_2: 'Galatasaray',
+                league: 'Süper Lig' 
+            },
+            {
+                id: 'gs-goztepe-2025-10-26',
+                title: 'Galatasaray 3 - 1 Göztepe',
+                date: '2025-10-26',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/n1pCwaf60bDKKPUs_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/1j94TIN2Lq66QF2kc57Lrj2yrhy-tNheF/view?usp=sharing', 
+                team_1: 'Galatasaray',
+                team_2: 'Göztepe',
+                league: 'Süper Lig' 
+            },
+            {
+                id: 'gs-ts-derbi-2025-11-01',
+                title: 'Galatasaray 0 - 0 Trabzonspor DERBİ',
+                date: '2025-11-01',
+                cover: 'https://beinsports.com.tr/mac-ozetleri-goller/super-lig/ozet/2025-2026/11/galatasaray-0-0-trabzonspor-mac-ozeti', 
+                driveLink: 'https://drive.google.com/file/d/1SPARX5gqHl0djZp33GkDSgVdsR0O9pIl/view?usp=sharing', 
+                team_1: 'Galatasaray',
+                team_2: 'Trabzonspor',
+                league: 'Süper Lig Derbi' 
+            },
+            {
+                id: 'kocaeli-gs-2025-11-09',
+                title: 'Kocaelispor 1 - 0 Galatasaray', 
+                date: '2025-11-09', 
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/nYPi6k_cWpTpXGiF_768x432.jpg', 
+                driveLink: 'https://drive.google.com/file/d/1GN2rNos9JAw66OiCMarvpDTuWesj7USI/view?usp=sharing', 
+                team_1: 'Kocaelispor',
+                team_2: 'Galatasaray',
+                league: 'Süper Lig' 
             }
         ];
 
-        const grid = document.getElementById('grid');
-        const empty = document.getElementById('empty');
-        const yearSpan = document.getElementById('year');
-        yearSpan.textContent = new Date().getFullYear();
-        const searchInput = document.getElementById('search');
-        const mainTitle = document.getElementById('mainTitle'); 
-        
-        let activeFilterValue = ""; 
-        let activeFilterGroup = "all";
-
-        // --- MENU JS (Açma/Kapama) ---
-        const sidebar = document.getElementById('sidebar');
-        const menuToggle = document.getElementById('menuToggle');
-        const closeMenu = document.getElementById('closeMenu');
-        const mainBody = document.getElementById('mainBody');
-        const overlay = document.getElementById('overlay');
-        const leagueLinks = document.getElementById('leagueLinks');
-        const teamLinksContainer = document.getElementById('teamLinks'); 
-        
-        function toggleMenu(forceOpen) {
-            const isOpen = sidebar.classList.contains('open');
-            if (forceOpen === undefined) {
-                forceOpen = !isOpen;
-            }
-            if (forceOpen) {
-                sidebar.classList.add('open');
-                mainBody.classList.add('menu-open');
-                overlay.classList.add('active');
-            } else {
-                sidebar.classList.remove('open');
-                mainBody.classList.remove('menu-open');
-                overlay.classList.remove('active');
-            }
+        // Tarih Formatlama Fonksiyonu
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const date = new Date(dateString);
+            return date.toLocaleDateString('tr-TR', options);
         }
 
-        menuToggle.addEventListener('click', () => toggleMenu(true));
-        closeMenu.addEventListener('click', () => toggleMenu(false));
-        overlay.addEventListener('click', () => toggleMenu(false));
+        // Maç Kartı Oluşturma Fonksiyonu
+        function createMatchCard(match) {
+            const card = document.createElement('div');
+            card.className = 'match-card';
+            
+            // Eğer Drive linki placeholder ise, butonu devre dışı bırak.
+            const isPlaceholder = match.driveLink.includes('LÜTFEN');
 
-        // Benzersiz Ligleri ve Takımları topla ve menüye ekle
-        function updateSidebarLinks(list){
-            const publishedMatches = list.filter(m => !m.isDraft);
+            card.innerHTML = `
+                <img src="${match.cover}" alt="${match.title} Kapağı" class="match-cover">
+                <div class="match-info">
+                    <div class="match-title">${match.title}</div>
+                    <div class="match-meta">${match.league} | ${formatDate(match.date)}</div>
+                    <a href="${isPlaceholder ? '#' : match.driveLink}" target="_blank" class="download-button" ${isPlaceholder ? 'style="background-color: #555; cursor: not-allowed;"' : ''}>
+                        ${isPlaceholder ? 'LİNK EKSİK' : 'İNDİR'}
+                    </a>
+                </div>
+            `;
+            return card;
+        }
 
-            // 1. Ligleri Güncelle
-            leagueLinks.innerHTML = '';
-            const uniqueLeagues = [...new Set(publishedMatches.map(m => m.league).filter(l => l))].sort();
-            uniqueLeagues.forEach(league => {
-                const link = document.createElement('a');
-                link.className = 'filter-link';
-                link.textContent = league + ' Maçları';
-                link.dataset.filter = league;
-                link.dataset.group = 'league';
-                leagueLinks.appendChild(link);
-            });
-            
-            // 2. Takımları Güncelle
-            teamLinksContainer.innerHTML = ''; // Temizle
-            const allTeams = publishedMatches.flatMap(m => [m.team_1, m.team_2]).filter(t => t);
-            const uniqueTeams = [...new Set(allTeams)].sort();
-            
-            uniqueTeams.forEach(team => {
-                const link = document.createElement('a');
-                link.className = 'filter-link';
-                link.textContent = team + ' Maçları';
-                link.dataset.filter = team;
-                link.dataset.group = 'team';
-                teamLinksContainer.appendChild(link);
-            });
-            
-            // 3. Filtre bağlantılarına click listener ekle
-            document.querySelectorAll('.filter-link').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    document.querySelectorAll('.filter-link').forEach(a => a.classList.remove('active'));
-                    e.target.classList.add('active');
-                    activeFilterValue = e.target.dataset.filter;
-                    activeFilterGroup = e.target.dataset.group;
-                    searchInput.value = '';
-                    filterAndSearch();
-                    toggleMenu(false);
+        // Maçları Render Etme Fonksiyonu
+        function renderMatches(filteredMatches, title) {
+            const container = document.getElementById('match-container');
+            const contentTitle = document.getElementById('content-title');
+            container.innerHTML = '';
+            contentTitle.textContent = title;
+
+            // En son yüklenen 8 maçı 'Son Yüklenenler' için göster
+            if (title === 'Son Yüklenenler') {
+                // Tarihe göre ters sırala ve sadece ilk 8'i al.
+                filteredMatches.sort((a, b) => new Date(b.date) - new Date(a.date));
+                filteredMatches = filteredMatches.slice(0, 8);
+            }
+
+            if (filteredMatches.length === 0) {
+                container.innerHTML = '<p style="color: #666;">Bu kriterlere uygun maç bulunamadı.</p>';
+            } else {
+                filteredMatches.forEach(match => {
+                    container.appendChild(createMatchCard(match));
                 });
-            });
-        }
-
-        // --- FİLTRELEME VE RENDER JS ---
-        function renderList(list) {
-            grid.innerHTML = '';
-            if(!list.length){ empty.style.display='block'; return }
-            empty.style.display='none';
-            
-            list.forEach(m => {
-                const card = document.createElement('article');
-                card.className = 'card';
-                card.innerHTML = `
-                    <div class="cover" style="background-image:url('${m.cover}')"></div>
-                    <div class="meta">
-                        <div class="category">${escapeHtml(m.league)}</div>
-                        <h3 class="title">${escapeHtml(m.title)}</h3>
-                        <div class="date">${formatDate(m.date)}</div>
-                        <div class="actions">
-                            <a href="${decodeURIComponent(m.driveLink)}" target="_blank" class="btn download">
-                                📥 İndir
-                            </a>
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-        
-        function filterAndSearch() {
-            const q = searchInput.value.trim().toLowerCase();
-            
-            let filtered = matches.filter(m => !m.isDraft).slice().reverse(); 
-            
-            if (q) {
-                 filtered = filtered.filter(m => 
-                     m.title.toLowerCase().includes(q) || 
-                     m.team_1.toLowerCase().includes(q) || 
-                     m.team_2.toLowerCase().includes(q)
-                 );
             }
-            
-            if (activeFilterValue) {
-                mainTitle.textContent = activeFilterValue === "" ? "Son Eklenen Maçlar" : activeFilterValue + " Maçları";
+        }
 
-                if (activeFilterGroup === 'all') {
-                } else if (activeFilterGroup === 'team') {
-                    filtered = filtered.filter(m => m.team_1 === activeFilterValue || m.team_2 === activeFilterValue);
-                } else if (activeFilterGroup === 'league') {
-                    filtered = filtered.filter(m => m.league === activeFilterValue);
+        // Navigasyon ve Filtreleme
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // Active sınıfını temizle
+                navLinks.forEach(l => l.classList.remove('active'));
+                
+                // Active sınıfını ekle
+                this.classList.add('active');
+
+                const filterType = this.dataset.filter;
+                let filteredList = [...matches];
+                let title = this.textContent;
+
+                // Filtreleme mantığı
+                if (filterType === 'all') {
+                    title = 'Tüm Maçlar';
+                    // Tüm maçları tarihe göre ters sırala
+                    filteredList.sort((a, b) => new Date(b.date) - new Date(a.date));
+                } else if (filterType === 'latest') {
+                    title = 'Son Yüklenenler';
+                    // İlk 8 maç renderMatches içinde halledilecek
+                } else {
+                    // Takım filtrelemesi
+                    filteredList = matches.filter(match => 
+                        match.team_1 === filterType || match.team_2 === filterType
+                    );
+                    filteredList.sort((a, b) => new Date(b.date) - new Date(a.date));
                 }
-            } else {
-                mainTitle.textContent = "Son Eklenen Maçlar"; 
-            }
-            
-            renderList(filtered);
-            updateSidebarLinks(matches);
-        }
 
-        searchInput.addEventListener('input', filterAndSearch);
-
-        // helpers
-        function formatDate(d){
-            if(!d) return '';
-            const dt = new Date(d);
-            if(isNaN(dt)) return d;
-            return dt.toLocaleDateString('tr-TR',{day:'2-digit',month:'short',year:'numeric'});
-        }
-        function escapeHtml(str){
-            return String(str).replace(/[&<>\"']/g, function(s){
-                return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s];
+                renderMatches(filteredList, title);
             });
-        }
+        });
 
-        // initial render
-        filterAndSearch();
+        // Arama Çubuğu Fonksiyonu
+        document.getElementById('search-input').addEventListener('keyup', function() {
+            const searchTerm = this.value.toLowerCase();
+            const filteredList = matches.filter(match => 
+                match.title.toLowerCase().includes(searchTerm) ||
+                match.team_1.toLowerCase().includes(searchTerm) ||
+                match.team_2.toLowerCase().includes(searchTerm) ||
+                match.league.toLowerCase().includes(searchTerm)
+            );
+            renderMatches(filteredList, `Arama Sonuçları: "${this.value}"`);
+            
+            // Sidebar'daki aktifliği kaldır
+            navLinks.forEach(l => l.classList.remove('active'));
+        });
+
+
+        // Sayfa yüklendiğinde varsayılan olarak 'Son Yüklenenler'i göster
+        document.addEventListener('DOMContentLoaded', () => {
+            const latestMatches = [...matches]; // Kopyasını al
+            renderMatches(latestMatches, 'Son Yüklenenler');
+        });
+
+        // JavaScript Bitişi
     </script>
 </body>
 </html>
