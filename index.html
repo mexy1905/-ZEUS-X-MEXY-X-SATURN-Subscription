@@ -142,6 +142,7 @@
             cursor: pointer;
             transition: background-color 0.2s;
         }
+        /* İSTENEN DEĞİŞİKLİK: HOVER (Mouse üstüne gelince) RENGİNİN YEŞİL OLMASI */
         .download-button:hover {
             background-color: #4CAF50; /* Yeşil */
         }
@@ -188,15 +189,6 @@
         <div class="nav-link team-link" data-filter="Trabzonspor">Trabzonspor Maçları</div>
         <div class="nav-link team-link" data-filter="Göztepe">Göztepe Maçları</div>
         <div class="nav-link team-link" data-filter="Samsunspor">Samsunspor Maçları</div>
-
-        <div class="nav-link" style="margin-top: 20px; font-weight: bold; color: #FFC300;">DERBİLER</div>
-        <div class="nav-link derbi-link" data-filter="derbi-2024-2025">2024 - 2025</div>
-        <div class="nav-link derbi-link" data-filter="derbi-2023-2024">2023 - 2024</div>
-        <div class="nav-link derbi-link" data-filter="derbi-2022-2023">2022 - 2023</div>
-        <div class="nav-link derbi-link" data-filter="derbi-2021-2022">2021 - 2022</div>
-        <div class="nav-link derbi-link" data-filter="derbi-2020-2021">2020 - 2021</div>
-        <div class="nav-link derbi-link" data-filter="derbi-2019-2020">2019 - 2020</div>
-        <div class="nav-link derbi-link" data-filter="derbi-2018-2019">2018 - 2019</div>
     </div>
 
     <div class="content">
@@ -314,7 +306,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 8. BEŞİKTAŞ DERBİSİ (SEZON EKLENDİ)
+            // 8. BEŞİKTAŞ DERBİSİ 
             // ------------------------------------------
             {
                 id: 'gs-bjk-derbi-2025-10-04',
@@ -324,8 +316,7 @@
                 driveLink: 'https://drive.google.com/file/d/1WI05ad1NUHPGbHEi0_FvePWfecs6Vq1L/view?usp=sharing', 
                 team_1: 'Galatasaray',
                 team_2: 'Beşiktaş',
-                league: 'Süper Lig Derbi', /* DERBİ ETİKETİ EKLENDİ */
-                season: '2024-2025' /* SEZON EKLENDİ */
+                league: 'Süper Lig' 
             },
             // ------------------------------------------
             // 9. BAŞAKŞEHİR 
@@ -354,18 +345,17 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 11. TRABZONSPOR DERBİSİ (SEZON EKLENDİ)
+            // 11. TRABZONSPOR DERBİSİ 
             // ------------------------------------------
             {
                 id: 'gs-ts-derbi-2025-11-01',
                 title: 'Galatasaray 0 - 0 Trabzonspor DERBİ',
                 date: '2025-11-01',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/ttVAh1Uu-W57FR48_768x432.jpg', 
+                cover: 'https://beinsports.com.tr/mac-ozetleri-goller/super-lig/ozet/2025-2026/11/galatasaray-0-0-trabzonspor-mac-ozeti', 
                 driveLink: 'https://drive.google.com/file/d/1SPARX5gqHl0djZp33GkDSgVdsR0O9pIl/view?usp=sharing', 
                 team_1: 'Galatasaray',
                 team_2: 'Trabzonspor',
-                league: 'Süper Lig Derbi', /* DERBİ ETİKETİ EKLENDİ */
-                season: '2024-2025' /* SEZON EKLENDİ */
+                league: 'Süper Lig Derbi' 
             },
             // ------------------------------------------
             // 12. KOCAELİSPOR 
@@ -381,11 +371,38 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // YER TUTUCU MAÇLAR 
+            // EKSİK TAKIMLAR İÇİN YER TUTUCU MAÇLAR (Görünmeyecek, sadece filtreleme için var)
             // ------------------------------------------
-            { id: 'fenerbahce-dummy-1', title: 'Fenerbahçe Maçı (Örnek)', date: '2024-01-01', cover: '#', driveLink: '#', team_1: 'Fenerbahçe', team_2: 'Rakip', league: 'Süper Lig' },
-            { id: 'besiktas-dummy-1', title: 'Beşiktaş Maçı (Örnek)', date: '2024-01-01', cover: '#', driveLink: '#', team_1: 'Beşiktaş', team_2: 'Rakip', league: 'Süper Lig' },
-            { id: 'samsun-dummy-1', title: 'Samsunspor Maçı (Örnek)', date: '2024-01-01', cover: '#', driveLink: '#', team_1: 'Samsunspor', team_2: 'Rakip', league: 'Süper Lig' }
+            {
+                id: 'fenerbahce-dummy-1',
+                title: 'Fenerbahçe Maçı (Örnek)',
+                date: '2024-01-01',
+                cover: '#', 
+                driveLink: '#',
+                team_1: 'Fenerbahçe',
+                team_2: 'Rakip',
+                league: 'Süper Lig' 
+            },
+            {
+                id: 'besiktas-dummy-1',
+                title: 'Beşiktaş Maçı (Örnek)',
+                date: '2024-01-01',
+                cover: '#', 
+                driveLink: '#',
+                team_1: 'Beşiktaş',
+                team_2: 'Rakip',
+                league: 'Süper Lig' 
+            },
+             {
+                id: 'samsun-dummy-1',
+                title: 'Samsunspor Maçı (Örnek)',
+                date: '2024-01-01',
+                cover: '#', 
+                driveLink: '#',
+                team_1: 'Samsunspor',
+                team_2: 'Rakip',
+                league: 'Süper Lig' 
+            }
         ];
 
         // Tarih Formatlama Fonksiyonu
@@ -426,7 +443,7 @@
             const realMatches = filteredMatches.filter(m => m.driveLink !== '#');
             
             // Sıralama
-            if (title === 'Son Yüklenenler' || title === 'Tüm Maçlar' || title.includes('Derbileri')) {
+            if (title === 'Son Yüklenenler' || title === 'Tüm Maçlar') {
                 realMatches.sort((a, b) => new Date(b.date) - new Date(a.date));
             }
 
@@ -435,7 +452,7 @@
 
             // Sonuç Kontrolü
             if (matchesToDisplay.length === 0) {
-                container.innerHTML = `<p style="color: #666; font-size: 18px; padding-top: 50px;">${title.includes('Maçları') || title.includes('Derbileri') ? 'Seçtiğin kategori için henüz maç eklenmedi.' : 'Bu kriterlere uygun maç bulunamadı.'}</p>`;
+                container.innerHTML = `<p style="color: #666; font-size: 18px; padding-top: 50px;">${title.includes('Maçları') ? 'Seçtiğin takım için henüz maç eklenmedi.' : 'Bu kriterlere uygun maç bulunamadı.'}</p>`;
             } 
             else {
                 matchesToDisplay.forEach(match => {
@@ -456,23 +473,8 @@
                 let filteredList = [...matches];
                 let title = this.textContent;
 
-                if (filterType === 'all') {
-                    title = 'Tüm Maçlar';
-                    filteredList.sort((a, b) => new Date(b.date) - new Date(a.date));
-                } else if (filterType === 'latest') {
-                    title = 'Son Yüklenenler';
-                } else if (filterType.startsWith('derbi-')) {
-                    // YENİ EKLENEN KISIM: DERBİ YILLARINA GÖRE FİLTRELEME
-                    const requiredSeason = filterType.substring(6); // 'derbi-' kısmını atar (örn: '2024-2025' kalır)
-                    title = this.textContent + ' Sezonu Derbileri';
-                    filteredList = matches.filter(match => 
-                        (match.league.includes('Derbi') || 
-                         (match.team_1.includes('Derbi') || match.team_2.includes('Derbi'))
-                        ) && match.season === requiredSeason
-                    );
-                }
-                else {
-                    // Takım filtrelemesi
+                if (filterType !== 'all' && filterType !== 'latest') {
+                    // Takım filtrelemesi (Hem takım 1 hem takım 2'de ara)
                     filteredList = matches.filter(match => 
                         match.team_1 === filterType || match.team_2 === filterType
                     );
