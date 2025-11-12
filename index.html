@@ -26,11 +26,9 @@
             height: 100%;
             overflow-y: auto;
             z-index: 1000; 
-            /* PC DAHİL TÜM EKRANLARDA MENÜ GİZLİ BAŞLAR */
             transform: translateX(-100%); 
             transition: transform 0.3s ease;
         }
-        /* MENÜ AÇILDIĞINDA */
         .sidebar.open {
             transform: translateX(0); 
         }
@@ -142,17 +140,57 @@
             cursor: pointer;
             transition: background-color 0.2s;
         }
-        /* İSTENEN DEĞİŞİKLİK: HOVER (Mouse üstüne gelince) RENGİNİN YEŞİL OLMASI */
         .download-button:hover {
-            background-color: #4CAF50; /* Yeşil */
+            background-color: #4CAF50; 
         }
         .footer {
             margin-top: 50px;
+            padding: 20px;
             text-align: center;
             font-size: 12px;
             color: #666;
+            background-color: #1E1E1E;
+        }
+        
+        /* FOOTER LİNKLERİ İÇİN YENİ STİL */
+        .footer-links-area {
+            padding: 10px;
+            border-top: 1px solid #333; 
+            margin-bottom: 5px;
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap; 
+        }
+        .footer-links-area a {
+             color: #E0E0E0; 
+             text-decoration: none;
+             white-space: nowrap;
+        }
+        .footer-links-area a:hover {
+            color: #4CAF50 !important; 
+        }
+        .link-item {
+            padding: 0 15px; 
+        }
+        .link-divider {
+            color: #666;
+            margin: 0 10px;
         }
 
+        /* Mobil uyum: Ayırıcıyı gizle ve linkleri üst üste göster */
+        @media (max-width: 600px) {
+            .footer-links-area {
+                flex-direction: column;
+            }
+            .link-divider {
+                display: none;
+            }
+            .link-item {
+                padding: 5px 0;
+            }
+        }
         /* Mobil/Tablet Uyumu için arama çubuğu düzenlemesi */
         @media (max-width: 768px) {
             .header {
@@ -178,8 +216,8 @@
     <div class="sidebar" id="sidebar">
         <div class="logo">MEXY ARCHIVE</div>
         
-        <div id="nav-all" class="nav-link active" data-filter="all">Tüm Maçlar</div>
-        <div id="nav-latest" class="nav-link" data-filter="latest">Son Yüklenenler</div>
+        <div id="nav-all" class="nav-link" data-filter="all">DUYURULAR</div>
+        <div id="nav-latest" class="nav-link active" data-filter="latest">Son Yüklenenler</div>
         
         <div class="nav-link" style="margin-top: 20px; font-weight: bold; color: #FFC300;">Takımlar</div>
         
@@ -189,6 +227,7 @@
         <div class="nav-link team-link" data-filter="Trabzonspor">Trabzonspor Maçları</div>
         <div class="nav-link team-link" data-filter="Göztepe">Göztepe Maçları</div>
         <div class="nav-link team-link" data-filter="Samsunspor">Samsunspor Maçları</div>
+
     </div>
 
     <div class="content">
@@ -203,8 +242,43 @@
         <div class="match-grid" id="match-container">
             </div>
 
+        <div id="announcement-container" style="display: none; padding: 20px; text-align: left;">
+            <h2 style="color: #FFC300; border-bottom: 2px solid #333; padding-bottom: 10px;">MEXY ARCHIVE'A HOŞ GELDİN!</h2>
+            <p style="font-size: 16px; line-height: 1.6; margin-top: 20px;">
+                **Bu bölüm, özel maç kayıtlarını, unutulmaz anları ve nadir arşivleri sizlerle buluşturmak için kurulmuştur.**<br><br>
+                Amacımız, kaliteli ve kesintisiz arşiv içeriğini en hızlı şekilde sunmaktır.
+                <br><br>
+                **Nasıl Gezinilir?**
+                <ul>
+                    <li>**Son Yüklenenler:** En güncel paylaşımlar hemen burada.</li>
+                    <li>**Takımlar:** İstediğin takımın maçlarını hızlıca filtrele.</li>
+                </ul>
+                Tüm maçlar Drive linki üzerinden indirilebilir durumdadır. İyi seyirler!
+            </p>
+            <p style="margin-top: 30px; color: #A0A0A0; font-style: italic;">
+                Yeni maçlar ve güncellemeler için bizi takipte kalın.
+            </p>
+        </div>
+
+
         <div class="footer">
-            &copy; 2024 Mexy Archive • Tüm hakları saklıdır.
+            <div class="footer-links-area">
+                <div class="link-item">
+                    <span style="color: #FFC300; font-weight: bold; margin-right: 10px;">Sponsor:</span>
+                    <a href="https://sponsorun-site-adresi.com" target="_blank">[Sponsorun Adı veya Logosu]</a>
+                </div>
+                
+                <span class="link-divider">|</span>
+
+                <div class="link-item">
+                    <span style="color: #FFC300; font-weight: bold; margin-right: 10px;">Kanal:</span>
+                    <a href="[KANALINIZIN YOUTUBE VEYDA SOSYAL MEDYA LİNKİ]" target="_blank">MEXY KANAL</a>
+                </div>
+            </div>
+            
+            <div style="margin-top: 10px;">
+                &copy; 2024 Mexy Archive • Tüm hakları saklıdır.
+            </div>
         </div>
     </div>
 
@@ -316,7 +390,7 @@
                 driveLink: 'https://drive.google.com/file/d/1WI05ad1NUHPGbHEi0_FvePWfecs6Vq1L/view?usp=sharing', 
                 team_1: 'Galatasaray',
                 team_2: 'Beşiktaş',
-                league: 'Süper Lig' 
+                league: 'Süper Lig Derbi' 
             },
             // ------------------------------------------
             // 9. BAŞAKŞEHİR 
@@ -371,38 +445,11 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // EKSİK TAKIMLAR İÇİN YER TUTUCU MAÇLAR (Görünmeyecek, sadece filtreleme için var)
+            // YER TUTUCU MAÇLAR 
             // ------------------------------------------
-            {
-                id: 'fenerbahce-dummy-1',
-                title: 'Fenerbahçe Maçı (Örnek)',
-                date: '2024-01-01',
-                cover: '#', 
-                driveLink: '#',
-                team_1: 'Fenerbahçe',
-                team_2: 'Rakip',
-                league: 'Süper Lig' 
-            },
-            {
-                id: 'besiktas-dummy-1',
-                title: 'Beşiktaş Maçı (Örnek)',
-                date: '2024-01-01',
-                cover: '#', 
-                driveLink: '#',
-                team_1: 'Beşiktaş',
-                team_2: 'Rakip',
-                league: 'Süper Lig' 
-            },
-             {
-                id: 'samsun-dummy-1',
-                title: 'Samsunspor Maçı (Örnek)',
-                date: '2024-01-01',
-                cover: '#', 
-                driveLink: '#',
-                team_1: 'Samsunspor',
-                team_2: 'Rakip',
-                league: 'Süper Lig' 
-            }
+            { id: 'fenerbahce-dummy-1', title: 'Fenerbahçe Maçı (Örnek)', date: '2024-01-01', cover: '#', driveLink: '#', team_1: 'Fenerbahçe', team_2: 'Rakip', league: 'Süper Lig' },
+            { id: 'besiktas-dummy-1', title: 'Beşiktaş Maçı (Örnek)', date: '2024-01-01', cover: '#', driveLink: '#', team_1: 'Beşiktaş', team_2: 'Rakip', league: 'Süper Lig' },
+            { id: 'samsun-dummy-1', title: 'Samsunspor Maçı (Örnek)', date: '2024-01-01', cover: '#', driveLink: '#', team_1: 'Samsunspor', team_2: 'Rakip', league: 'Süper Lig' }
         ];
 
         // Tarih Formatlama Fonksiyonu
@@ -436,14 +483,24 @@
         function renderMatches(filteredMatches, title) {
             const container = document.getElementById('match-container');
             const contentTitle = document.getElementById('content-title');
+            const announcement = document.getElementById('announcement-container'); 
+            
             container.innerHTML = '';
+            announcement.style.display = 'none'; 
+
+            if (title === 'DUYURULAR') {
+                contentTitle.textContent = title;
+                announcement.style.display = 'block'; 
+                return; 
+            }
+            
             contentTitle.textContent = title;
 
             // Gerçek maçları bul
             const realMatches = filteredMatches.filter(m => m.driveLink !== '#');
             
             // Sıralama
-            if (title === 'Son Yüklenenler' || title === 'Tüm Maçlar') {
+            if (title === 'Son Yüklenenler') {
                 realMatches.sort((a, b) => new Date(b.date) - new Date(a.date));
             }
 
@@ -473,8 +530,14 @@
                 let filteredList = [...matches];
                 let title = this.textContent;
 
-                if (filterType !== 'all' && filterType !== 'latest') {
-                    // Takım filtrelemesi (Hem takım 1 hem takım 2'de ara)
+                if (filterType === 'all') {
+                    // Duyurular
+                    title = 'DUYURULAR';
+                } else if (filterType === 'latest') {
+                    title = 'Son Yüklenenler';
+                } 
+                else {
+                    // Takım filtrelemesi
                     filteredList = matches.filter(match => 
                         match.team_1 === filterType || match.team_2 === filterType
                     );
@@ -502,6 +565,7 @@
             renderMatches(filteredList, `Arama Sonuçları: "${this.value}"`);
             
             navLinks.forEach(l => l.classList.remove('active'));
+            document.getElementById('announcement-container').style.display = 'none';
         });
 
         // MENÜ AÇMA/KAPAMA LOGİĞİ 
