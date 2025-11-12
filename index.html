@@ -33,6 +33,13 @@
             margin-bottom: 30px;
             text-align: center;
         }
+        /* LOGO RESMİ STİLİ - logo.png dosyasını aynı klasöre kaydet */
+        .logo img {
+            width: 150px; /* Logonun genişliği */
+            height: auto;
+            display: block;
+            margin: 0 auto 10px auto; /* Ortalamak için */
+        }
         .nav-link {
             padding: 10px 0;
             cursor: pointer;
@@ -111,7 +118,7 @@
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #FFC300;
+            background-color: #FFC300; /* Sarı buton rengi */
             color: #121212;
             text-align: center;
             text-decoration: none;
@@ -136,7 +143,10 @@
 <body>
 
     <div class="sidebar">
-        <div class="logo">MEXY ARCHIVE</div>
+        <div class="logo">
+            <img src="logo.png" alt="Mexy Archive Logo">
+            MEXY ARCHIVE
+        </div>
         <div id="nav-all" class="nav-link active" data-filter="all">Tüm Maçlar</div>
         <div id="nav-latest" class="nav-link" data-filter="latest">Son Yüklenenler</div>
         
@@ -171,7 +181,7 @@
         // Maç Verileri
         const matches = [
             // ------------------------------------------
-            // ESKİ MAÇLAR (Link/Cover Placeholder Kullanıldı)
+            // 1. ESKİ MAÇ: KARAGÜMRÜK (Artık Tamamlandı)
             // ------------------------------------------
             {
                 id: 'gs-karagumruk-2025-08-15',
@@ -183,6 +193,9 @@
                 team_2: 'Fatih Karagümrük',
                 league: 'Süper Lig'
             },
+            // ------------------------------------------
+            // 2. ESKİ MAÇ: GAZİANTEP (Artık Tamamlandı)
+            // ------------------------------------------
             {
                 id: 'gaziantep-gs-2025-08-22',
                 title: 'Gaziantep 0 - 3 Galatasaray',
@@ -193,6 +206,9 @@
                 team_2: 'Galatasaray',
                 league: 'Süper Lig'
             },
+            // ------------------------------------------
+            // 3. ESKİ MAÇ: KAYSERİSPOR (Artık Tamamlandı)
+            // ------------------------------------------
             {
                 id: 'kayserispor-gs-2025-08-24',
                 title: 'Kayserispor 0 - 4 Galatasaray',
@@ -205,7 +221,7 @@
             },
             
             // ------------------------------------------
-            // YENİ EKLENEN 9 MAÇ (Link ve Cover Hazır)
+            // 4. YENİ MAÇ: RİZESPOR
             // ------------------------------------------
             {
                 id: 'gs-rizespor-2025-08-30',
@@ -217,6 +233,9 @@
                 team_2: 'Çaykur Rizespor',
                 league: 'Süper Lig' 
             },
+            // ------------------------------------------
+            // 5. YENİ MAÇ: EYÜPSPOR
+            // ------------------------------------------
             {
                 id: 'eyupspor-gs-2025-09-13',
                 title: 'Eyüpspor 0 - 2 Galatasaray',
@@ -227,6 +246,9 @@
                 team_2: 'Galatasaray',
                 league: 'Süper Lig' 
             },
+            // ------------------------------------------
+            // 6. YENİ MAÇ: KONYASPOR
+            // ------------------------------------------
             {
                 id: 'gs-konyaspor-2025-09-22',
                 title: 'Galatasaray 3 - 1 Konyaspor',
@@ -237,6 +259,9 @@
                 team_2: 'Konyaspor',
                 league: 'Süper Lig' 
             },
+            // ------------------------------------------
+            // 7. YENİ MAÇ: ALANYASPOR
+            // ------------------------------------------
             {
                 id: 'alanya-gs-2025-09-26',
                 title: 'Alanyaspor 0 - 1 Galatasaray',
@@ -247,6 +272,9 @@
                 team_2: 'Galatasaray',
                 league: 'Süper Lig' 
             },
+            // ------------------------------------------
+            // 8. YENİ MAÇ: BEŞİKTAŞ DERBİSİ
+            // ------------------------------------------
             {
                 id: 'gs-bjk-derbi-2025-10-04',
                 title: 'Galatasaray 1 - 1 Beşiktaş DERBİ',
@@ -257,6 +285,9 @@
                 team_2: 'Beşiktaş',
                 league: 'Süper Lig' 
             },
+            // ------------------------------------------
+            // 9. YENİ MAÇ: BAŞAKŞEHİR
+            // ------------------------------------------
             {
                 id: 'basaksehir-gs-2025-10-18',
                 title: 'Başakşehir 1 - 2 Galatasaray',
@@ -267,6 +298,9 @@
                 team_2: 'Galatasaray',
                 league: 'Süper Lig' 
             },
+            // ------------------------------------------
+            // 10. YENİ MAÇ: GÖZTEPE
+            // ------------------------------------------
             {
                 id: 'gs-goztepe-2025-10-26',
                 title: 'Galatasaray 3 - 1 Göztepe',
@@ -277,16 +311,22 @@
                 team_2: 'Göztepe',
                 league: 'Süper Lig' 
             },
+            // ------------------------------------------
+            // 11. YENİ MAÇ: TRABZONSPOR DERBİSİ
+            // ------------------------------------------
             {
                 id: 'gs-ts-derbi-2025-11-01',
                 title: 'Galatasaray 0 - 0 Trabzonspor DERBİ',
                 date: '2025-11-01',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/ttVAh1Uu-W57FR48_768x432.jpg', 
+                cover: 'https://beinsports.com.tr/mac-ozetleri-goller/super-lig/ozet/2025-2026/11/galatasaray-0-0-trabzonspor-mac-ozeti', 
                 driveLink: 'https://drive.google.com/file/d/1SPARX5gqHl0djZp33GkDSgVdsR0O9pIl/view?usp=sharing', 
                 team_1: 'Galatasaray',
                 team_2: 'Trabzonspor',
                 league: 'Süper Lig Derbi' 
             },
+            // ------------------------------------------
+            // 12. YENİ MAÇ: KOCAELİSPOR
+            // ------------------------------------------
             {
                 id: 'kocaeli-gs-2025-11-09',
                 title: 'Kocaelispor 1 - 0 Galatasaray', 
@@ -311,16 +351,13 @@
             const card = document.createElement('div');
             card.className = 'match-card';
             
-            // Eğer Drive linki placeholder ise, butonu devre dışı bırak.
-            const isPlaceholder = match.driveLink.includes('LÜTFEN');
-
             card.innerHTML = `
                 <img src="${match.cover}" alt="${match.title} Kapağı" class="match-cover">
                 <div class="match-info">
                     <div class="match-title">${match.title}</div>
                     <div class="match-meta">${match.league} | ${formatDate(match.date)}</div>
-                    <a href="${isPlaceholder ? '#' : match.driveLink}" target="_blank" class="download-button" ${isPlaceholder ? 'style="background-color: #555; cursor: not-allowed;"' : ''}>
-                        ${isPlaceholder ? 'LİNK EKSİK' : 'İNDİR'}
+                    <a href="${match.driveLink}" target="_blank" class="download-button">
+                        İNDİR
                     </a>
                 </div>
             `;
@@ -403,6 +440,9 @@
         // Sayfa yüklendiğinde varsayılan olarak 'Son Yüklenenler'i göster
         document.addEventListener('DOMContentLoaded', () => {
             const latestMatches = [...matches]; // Kopyasını al
+            // Varsayılan olarak 'Tüm Maçlar' linkini aktif yap
+            document.getElementById('nav-all').classList.remove('active');
+            document.getElementById('nav-latest').classList.add('active');
             renderMatches(latestMatches, 'Son Yüklenenler');
         });
 
