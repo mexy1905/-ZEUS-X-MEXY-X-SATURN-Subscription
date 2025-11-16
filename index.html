@@ -350,7 +350,8 @@
         <div class="nav-link team-link" data-filter="Trabzonspor">Trabzonspor Maçları</div>
         <div class="nav-link team-link" data-filter="Göztepe">Göztepe Maçları</div>
         <div class="nav-link team-link" data-filter="Samsunspor">Samsunspor Maçları</div>
-        <div class="nav-link team-link" data-filter="Milli Takım">Ulusal Maçları</div>
+        <div class="nav-link team-link" data-filter="Ulusal Maç">Ulusal Maçları</div>
+
     </div>
 
     <div class="content" style="display: none;" id="main-content">
@@ -410,14 +411,39 @@
     <script>
         // JavaScript Başlangıcı
 
-        // 🚨 GİZLİ ŞİFRE BURADA 🚨
-        // Not: Şifreleri virgülle ayırarak birden fazla şifre kullanabilirsiniz.
-        const SECRET_PASSWORD = 'Saturn1905@,Mexy1905@,Zeus1967@,Kayra1967@ZMS,Oreo1925@ZMS,**yeni_sifreniz_1**,**yeni_sifreniz_2**';
+        // 🚨 GİZLİ ŞİFRE BURADA 🚨 (Güncellendi)
+        const SECRET_PASSWORD = 'Türkiye123@TR , Portekiz1985@PT';
 
-        // Maç Verileri
+        // Maç Verileri (Güncellendi)
         const matches = [
             // ------------------------------------------
-            // 1. KARAGÜMRÜK
+            // 1. YENİ EK: TÜRKİYE - PORTEKİZ
+            // ------------------------------------------
+            {
+                id: 'turkiye-portekiz-2025-11-19',
+                title: 'Türkiye 3 - 1 Portekiz',
+                date: '2025-11-19',
+                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/qX1tM-gO_K_tQ4sV_768x432.jpg',
+                driveLink: 'https://drive.google.com/file/d/1N_f_Qn9tV_7M0K_aA9s_L6hA7lF0_rYp/view?usp=sharing',
+                team_1: 'Türkiye',
+                team_2: 'Portekiz',
+                league: 'Ulusal Maç'
+            },
+            // ------------------------------------------
+            // 2. TÜRKİYE - BULGARİSTAN (ULUSAL MAÇ)
+            // ------------------------------------------
+            { 
+                id: 'turkiye-bulgaristan-2025-11-16',
+                title: 'Türkiye 2 - 0 Bulgaristan',
+                date: '2025-11-16',
+                cover: 'https://i.ytimg.com/vi/S12OuOfgdKQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCuwzicBqbjhahteqnK6DoASijmyg',
+                driveLink: 'https://drive.google.com/drive/folders/1XIcZuTXzY7A-2QpBl6zJCQoD0WC495vm?usp=drive_link',
+                team_1: 'Türkiye',
+                team_2: 'Bulgaristan',
+                league: 'Ulusal Maç'
+            },
+            // ------------------------------------------
+            // 3. KARAGÜMRÜK
             // ------------------------------------------
             {
                 id: 'gs-karagumruk-2025-08-15',
@@ -430,7 +456,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 2. GAZİANTEP
+            // 4. GAZİANTEP
             // ------------------------------------------
             {
                 id: 'gaziantep-gs-2025-08-22',
@@ -443,7 +469,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 3. KAYSERİSPOR
+            // 5. KAYSERİSPOR
             // ------------------------------------------
             {
                 id: 'kayserispor-gs-2025-08-24',
@@ -457,7 +483,7 @@
             },
 
             // ------------------------------------------
-            // 4. RİZESPOR
+            // 6. RİZESPOR
             // ------------------------------------------
             {
                 id: 'gs-rizespor-2025-08-30',
@@ -470,7 +496,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 5. EYÜPSPOR
+            // 7. EYÜPSPOR
             // ------------------------------------------
             {
                 id: 'eyupspor-gs-2025-09-13',
@@ -483,7 +509,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 6. KONYASPOR
+            // 8. KONYASPOR
             // ------------------------------------------
             {
                 id: 'gs-konyaspor-2025-09-22',
@@ -496,7 +522,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 7. ALANYASPOR
+            // 9. ALANYASPOR
             // ------------------------------------------
             {
                 id: 'alanya-gs-2025-09-26',
@@ -509,7 +535,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 8. BEŞİKTAŞ DERBİSİ
+            // 10. BEŞİKTAŞ DERBİSİ
             // ------------------------------------------
             {
                 id: 'gs-bjk-derbi-2025-10-04',
@@ -522,7 +548,7 @@
                 league: 'Süper Lig Derbi'
             },
             // ------------------------------------------
-            // 9. BAŞAKŞEHİR
+            // 11. BAŞAKŞEHİR
             // ------------------------------------------
             {
                 id: 'basaksehir-gs-2025-10-18',
@@ -535,7 +561,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 10. GÖZTEPE
+            // 12. GÖZTEPE
             // ------------------------------------------
             {
                 id: 'gs-goztepe-2025-10-26',
@@ -548,7 +574,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 11. TRABZONSPOR DERBİSİ
+            // 13. TRABZONSPOR DERBİSİ
             // ------------------------------------------
             {
                 id: 'gs-ts-derbi-2025-11-01',
@@ -561,7 +587,7 @@
                 league: 'Süper Lig Derbi'
             },
             // ------------------------------------------
-            // 12. KOCAELİSPOR
+            // 14. KOCAELİSPOR
             // ------------------------------------------
             {
                 id: 'kocaeli-gs-2025-11-09',
@@ -574,7 +600,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 13. FENERBAHÇE - KAYSERİSPOR (LİNK GÜNCEL)
+            // 15. FENERBAHÇE - KAYSERİSPOR (LİNK GÜNCEL)
             // ------------------------------------------
             {
                 id: 'fb-kayserispor-2025-11-09',
@@ -588,7 +614,7 @@
             },
 
             // ------------------------------------------
-            // 14. TRABZONSPOR - KOCAELİSPOR
+            // 16. TRABZONSPOR - KOCAELİSPOR
             // ------------------------------------------
             {
                 id: 'ts-kocaeli-2025-08-11',
@@ -601,7 +627,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 15. KASIMPAŞA - TRABZONSPOR
+            // 17. KASIMPAŞA - TRABZONSPOR
             // ------------------------------------------
             {
                 id: 'kasimpasa-ts-2025-08-18',
@@ -614,7 +640,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 16. TRABZONSPOR - SAMSUNSPOR
+            // 18. TRABZONSPOR - SAMSUNSPOR
             // ------------------------------------------
             {
                 id: 'ts-samsun-2025-08-31',
@@ -627,7 +653,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 17. TRABZONSPOR - ANTALYASPOR
+            // 19. TRABZONSPOR - ANTALYASPOR
             // ------------------------------------------
             {
                 id: 'ts-antalya-2025-08-24',
@@ -640,7 +666,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 18. TRABZONSPOR - GAZİANTEP FK
+            // 20. TRABZONSPOR - GAZİANTEP FK
             // ------------------------------------------
             {
                 id: 'ts-gaziantep-2025-09-20',
@@ -653,7 +679,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 19. TRABZONSPOR - ALANYASPOR
+            // 21. TRABZONSPOR - ALANYASPOR
             // ------------------------------------------
             {
                 id: 'ts-alanya-2025-11-08',
@@ -666,7 +692,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 20. TRABZONSPOR - EYÜPSPOR
+            // 22. TRABZONSPOR - EYÜPSPOR
             // ------------------------------------------
             {
                 id: 'ts-eyup-2025-10-25',
@@ -679,7 +705,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 21. RİZESPOR - TRABZONSPOR
+            // 23. RİZESPOR - TRABZONSPOR
             // ------------------------------------------
             {
                 id: 'rize-ts-2025-10-18',
@@ -692,7 +718,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 22. KARAGÜMRÜK - TRABZONSPOR
+            // 24. KARAGÜMRÜK - TRABZONSPOR
             // ------------------------------------------
             {
                 id: 'karagumruk-ts-2025-09-27',
@@ -704,32 +730,6 @@
                 team_2: 'Trabzonspor',
                 league: 'Süper Lig'
             },
-            // ------------------------------------------
-            // 23. TÜRKİYE - BULGARİSTAN (ULUSAL MAÇ)
-            // ------------------------------------------
-            { 
-                id: 'turkiye-bulgaristan-2025-11-16',
-                title: 'Türkiye 2 - 0 Bulgaristan',
-                date: '2025-11-16',
-                cover: 'https://i.ytimg.com/vi/S12OuOfgdKQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCuwzicBqbjhahteqnK6DoASijmyg',
-                driveLink: 'https://drive.google.com/drive/folders/1XIcZuTXzY7A-2QpBl6zJCQoD0WC495vm?usp=drive_link',
-                team_1: '**Milli Takım**', // Filtre için güncellendi
-                team_2: 'Bulgaristan',
-                league: 'Ulusal Lig'
-            },
-            // ------------------------------------------
-            // 24. TÜRKİYE - PORTEKİZ (ULUSAL MAÇ)
-            // ------------------------------------------
-            { 
-                id: 'turkiye-portekiz-2025-11-20',
-                title: 'Türkiye 1 - 1 Portekiz',
-                date: '2025-11-20',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/ttVAh1Uu-W57FR48_768x432.jpg', // Örnek resim
-                driveLink: 'https://drive.google.com/drive/folders/link_buraya_gelecek', // LİNKİNİ GÜNCELLEMEYİ UNUTMA
-                team_1: '**Milli Takım**', // Filtre için güncellendi
-                team_2: 'Portekiz',
-                league: 'Ulusal Lig'
-            }
         ];
 
         // Tarih Formatlama Fonksiyonu
@@ -744,7 +744,7 @@
             const card = document.createElement('div');
             card.className = 'match-card';
 
-            const isPlaceholder = match.driveLink.includes('link_buraya_gelecek') || match.driveLink === '#';
+            const isPlaceholder = match.driveLink === '#';
             const buttonStyle = isPlaceholder ? 'style="background-color: #666; cursor: default;"' : '';
             const buttonText = isPlaceholder ? 'LİNK EKLENECEK' : 'İNDİR';
 
@@ -794,4 +794,152 @@
             if (teamCovers[filterType]) {
                     sectionCover.src = teamCovers[filterType];
                     sectionCover.style.display = 'block';
-                    sectionCover.alt = title.replace(' Maç
+                    sectionCover.alt = title.replace(' Maçları', '') + " Kapak Görseli";
+            }
+
+            // Gerçek maçları ve yer tutucuları ayır
+            const realMatches = filteredMatches.filter(m => m.driveLink !== '#');
+            const placeholderMatches = filteredMatches.filter(m => m.driveLink === '#');
+
+            let matchesToDisplay = realMatches;
+
+            // Sadece 'Son Yüklenenler' için sıralama ve kesme yap.
+            if (title === 'Son Yüklenenler') {
+                // En yeniden en eskiye sırala
+                matchesToDisplay.sort((a, b) => new Date(b.date) - new Date(a.date));
+                matchesToDisplay = matchesToDisplay.slice(0, 15); // Sadece ilk 15'i göster
+            } else {
+                // Filtrelenmiş diğer listeler için sadece tarihe göre sırala
+                matchesToDisplay.sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
+
+            // Önce maçları, sonra yer tutucuları göster
+            matchesToDisplay.forEach(match => {
+                container.appendChild(createMatchCard(match));
+            });
+            placeholderMatches.forEach(match => {
+                container.appendChild(createMatchCard(match));
+            });
+            
+            if (matchesToDisplay.length === 0 && placeholderMatches.length === 0) {
+                container.innerHTML = '<p style="text-align: center; font-size: 18px; color: #DC3545; padding: 50px;">Bu bölümde henüz maç bulunmamaktadır.</p>';
+            }
+        }
+
+        // Maçları Filtreleme Fonksiyonu
+        function filterMatches(filterType, title) {
+            let filtered;
+            if (filterType === 'all') {
+                // Duyurular sayfası için filtreleme yapılmaz
+                filtered = [];
+            } else if (filterType === 'latest') {
+                // Tüm maçlar en yeniye göre sıralanır ve renderMatches'ta kesilir
+                filtered = matches;
+            } else {
+                filtered = matches.filter(match => 
+                    match.team_1.includes(filterType) || match.team_2.includes(filterType) || match.league.includes(filterType)
+                );
+            }
+            renderMatches(filtered, title);
+        }
+
+        // Olay Dinleyicileri Ekleme
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const searchInput = document.getElementById('search-input');
+            
+            // Şifre Kontrolü
+            const passwordInput = document.getElementById('password-input');
+            const loginButton = document.getElementById('login-button');
+            const passwordScreen = document.getElementById('password-screen');
+            const mainContent = document.getElementById('main-content');
+            const passwordError = document.getElementById('password-error');
+
+            // Şifreleri virgül, boşluk ve @ işaretlerini temizleyerek bir diziye çevir
+            const validPasswords = SECRET_PASSWORD.split(',').map(p => p.trim());
+
+            function attemptLogin() {
+                const inputPassword = passwordInput.value.trim();
+
+                if (validPasswords.includes(inputPassword)) {
+                    passwordScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        passwordScreen.style.display = 'none';
+                        mainContent.style.display = 'flex';
+                        // Başlangıçta son yüklenenleri göster
+                        filterMatches('latest', 'Son Yüklenenler');
+                    }, 500); // 0.5 saniye sonra kaldır
+                } else {
+                    passwordError.textContent = 'Hatalı şifre. Lütfen tekrar deneyin.';
+                    setTimeout(() => {
+                        passwordError.textContent = '';
+                    }, 2000);
+                }
+            }
+            
+            loginButton.addEventListener('click', attemptLogin);
+            passwordInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    attemptLogin();
+                }
+            });
+
+
+            // Menü Açma/Kapama
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+            });
+
+            // Navigasyon Linkleri
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    // Aktif sınıfını kaldır
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    // Tıklanan linke aktif sınıfını ekle
+                    this.classList.add('active');
+
+                    const filterValue = this.dataset.filter;
+                    const title = this.textContent;
+
+                    filterMatches(filterValue, title);
+                    
+                    // Mobil'de menüyü kapat
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.remove('open');
+                    }
+                });
+            });
+
+            // Arama Çubuğu
+            searchInput.addEventListener('input', function() {
+                const query = this.value.toLowerCase();
+                const currentFilter = document.querySelector('.nav-link.active').dataset.filter;
+                const currentTitle = document.querySelector('.nav-link.active').textContent;
+                
+                // Mevcut filtreye göre filtrele
+                let baseMatches;
+                if (currentFilter === 'latest') {
+                    baseMatches = matches;
+                } else if (currentFilter === 'all') {
+                    baseMatches = []; // Duyurular sayfasında arama olmaz
+                } else {
+                    baseMatches = matches.filter(match => 
+                        match.team_1.includes(currentFilter) || match.team_2.includes(currentFilter) || match.league.includes(currentFilter)
+                    );
+                }
+
+                // Arama sorgusuna göre filtrele
+                const searchFiltered = baseMatches.filter(match => 
+                    match.title.toLowerCase().includes(query) || match.league.toLowerCase().includes(query)
+                );
+
+                renderMatches(searchFiltered, currentTitle);
+            });
+
+
+        });
+    </script>
+</body>
+</html>
