@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZEUS X MEXY X SATURN Subscription  </title>
+    <title>ZEUS X MEXY X SATURN Subscription </title>
     <link rel="icon" type="image/x-icon" href="favicon.ico"> 
     <style>
         /* CSS Başlangıcı - Vurgu Rengi #DC3545 (KIRMIZI) */
@@ -53,6 +53,36 @@
             color: #DC3545; /* GÜNCEL RENK: KIRMIZI */
             padding-left: 10px;
         }
+        /* YENİ STİL: Giriş başlığı için hover/aktif durumu devre dışı bırakma */
+        #nav-login {
+            cursor: default;
+            font-weight: bold;
+        }
+        #nav-login:hover {
+            background-color: #1E1E1E !important; /* Sidebar rengi */
+            color: #DC3545 !important;
+            padding-left: 0 !important;
+        }
+        /* YENİ STİL: Giriş yap butonu */
+        #login-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #DC3545;
+            color: #121212;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        #login-button:hover {
+            background-color: #FF6347; /* Daha kırmızımsı bir hover */
+        }
+        
         .content {
             margin-left: 0; 
             padding: 40px;
@@ -211,10 +241,11 @@
 <body>
 
     <div class="sidebar" id="sidebar">
-        <div class="logo">MEXY ARCHIVE</div>
+        <div class="logo">MEXY SUBSCRIPTION</div>
         
-        <div id="nav-all" class="nav-link" data-filter="all">DUYURULAR</div>
-        <div id="nav-latest" class="nav-link active" data-filter="latest">Son Yüklenenler</div>
+        <div id="nav-login" class="nav-link" data-filter="login">SUBSCRIPTION GİRİŞİ</div>
+        <button id="login-button">Giriş Yap</button>
+        <div id="nav-latest" class="nav-link active" data-filter="latest" style="margin-top: 30px;">Son Yüklenenler</div>
         
         <div class="nav-link" style="margin-top: 20px; font-weight: bold; color: #DC3545;">Takımlar</div>
         
@@ -331,7 +362,7 @@
             };
 
 
-            if (title === 'DUYURULAR') {
+            if (title === 'SUBSCRIPTION GİRİŞİ') {
                 contentTitle.textContent = title;
                 announcement.style.display = 'block'; 
                 return; 
@@ -381,8 +412,13 @@
         // Navigasyon ve Filtreleme
         const sidebar = document.getElementById('sidebar');
         const navLinks = document.querySelectorAll('.nav-link');
+        const loginButton = document.getElementById('login-button'); // Yeni Giriş Yap butonu
+
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
+                // Sadece team-link'ler ve nav-latest aktif hale getirilebilir. nav-login sadece başlık
+                if (this.id === 'nav-login') return; 
+
                 navLinks.forEach(l => l.classList.remove('active'));
                 this.classList.add('active');
 
@@ -390,9 +426,9 @@
                 let filteredList = [...matches];
                 let title = this.textContent;
 
-                if (filterType === 'all') {
-                    // Duyurular
-                    title = 'DUYURULAR';
+                if (filterType === 'login') {
+                    // Subscription Girişi (Eski Duyurular)
+                    title = 'SUBSCRIPTION GİRİŞİ';
                 } else if (filterType === 'latest') {
                     title = 'Son Yüklenenler';
                 } 
@@ -411,6 +447,20 @@
                 }
             });
         });
+        
+        // GİRİŞ YAP BUTONU İŞLEVİ (Sadece duyurular ekranına yönlendirme simülasyonu)
+        if (loginButton) {
+             loginButton.addEventListener('click', function() {
+                navLinks.forEach(l => l.classList.remove('active'));
+                document.getElementById('nav-login').classList.add('active'); // Navigasyonda aktifliği koru
+                renderMatches([], 'SUBSCRIPTION GİRİŞİ'); 
+                
+                if (sidebar.classList.contains('open')) {
+                    sidebar.classList.remove('open');
+                }
+             });
+        }
+
 
         // Arama Çubuğu Fonksiyonu
         document.getElementById('search-input').addEventListener('keyup', function() {
@@ -439,7 +489,7 @@
         // Sayfa yüklendiğinde varsayılan olarak 'Son Yüklenenler'i göster
         document.addEventListener('DOMContentLoaded', () => {
             const latestMatches = [...matches]; 
-            document.getElementById('nav-all').classList.remove('active');
+            document.getElementById('nav-login').classList.remove('active'); // Giriş başlığını başlangıçta aktif yapma
             document.getElementById('nav-latest').classList.add('active');
             renderMatches(latestMatches, 'Son Yüklenenler');
         });
