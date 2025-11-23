@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZEUS X MEXY X SATURN Subscription </title>
+    <title>ZEUS X MEXY X SATURN Subscription</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico"> 
     <style>
-        /* CSS Başlangıcı - Vurgu Rengi #DC3545 (KIRMIZI) */
+        /* CSS Başlangıcı */
         body {
             font-family: Arial, sans-serif;
             background-color: #121212;
@@ -19,7 +19,7 @@
             width: 250px;
             background-color: #1E1E1E;
             padding: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            box-shadow: 2px 0 5px rgba(0,0,0,0.5);
             position: fixed;
             top: 0;
             left: 0;
@@ -29,13 +29,11 @@
             transform: translateX(-100%); 
             transition: transform 0.3s ease;
         }
-        .sidebar.open {
-            transform: translateX(0); 
-        }
+        .sidebar.open { transform: translateX(0); }
         .logo {
             font-size: 24px;
             font-weight: bold;
-            color: #DC3545; /* GÜNCEL RENK: KIRMIZI */
+            color: #DC3545;
             margin-bottom: 30px;
             text-align: center;
         }
@@ -50,41 +48,11 @@
         }
         .nav-link:hover, .nav-link.active {
             background-color: #333;
-            color: #DC3545; /* GÜNCEL RENK: KIRMIZI */
+            color: #DC3545;
             padding-left: 10px;
         }
-        /* YENİ STİL: Giriş başlığı için hover/aktif durumu devre dışı bırakma */
-        #nav-login {
-            cursor: default;
-            font-weight: bold;
-        }
-        #nav-login:hover {
-            background-color: #1E1E1E !important; /* Sidebar rengi */
-            color: #DC3545 !important;
-            padding-left: 0 !important;
-        }
-        /* YENİ STİL: Giriş yap butonu */
-        #login-button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: #DC3545;
-            color: #121212;
-            text-align: center;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            margin-top: 20px;
-            font-size: 16px;
-        }
-        #login-button:hover {
-            background-color: #FF6347; /* Daha kırmızımsı bir hover */
-        }
-        
         .content {
-            margin-left: 0; 
+            margin-left: 0;
             padding: 40px;
             flex-grow: 1;
             width: 100%;
@@ -98,7 +66,7 @@
             display: block; 
             background: none; 
             border: none; 
-            color: #DC3545; /* GÜNCEL RENK: KIRMIZI */
+            color: #DC3545;
             font-size: 28px; 
             cursor: pointer;
             padding: 0;
@@ -129,38 +97,19 @@
             background-color: #1E1E1E;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             transition: transform 0.3s;
         }
-        .match-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-        }
-        .match-cover {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            display: block;
-        }
-        .match-info {
-            padding: 15px;
-        }
-        .match-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #DC3545; /* GÜNCEL RENK: KIRMIZI */
-        }
-        .match-meta {
-            font-size: 14px;
-            color: #A0A0A0;
-            margin-bottom: 10px;
-        }
+        .match-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.5); }
+        .match-cover { width: 100%; height: 180px; object-fit: cover; display: block; }
+        .match-info { padding: 15px; }
+        .match-title { font-size: 18px; font-weight: bold; margin-bottom: 5px; color: #DC3545; }
+        .match-meta { font-size: 14px; color: #A0A0A0; margin-bottom: 10px; }
         .download-button {
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #DC3545; /* GÜNCEL RENK: KIRMIZI */
+            background-color: #DC3545;
             color: #121212;
             text-align: center;
             text-decoration: none;
@@ -170,9 +119,7 @@
             cursor: pointer;
             transition: background-color 0.2s;
         }
-        .download-button:hover {
-            background-color: #4CAF50; /* Hover rengi hala yeşil */
-        }
+        .download-button:hover { background-color: #4CAF50; }
         .footer {
             margin-top: 50px;
             padding: 20px;
@@ -181,8 +128,6 @@
             color: #666;
             background-color: #1E1E1E;
         }
-        
-        /* FOOTER LİNKLERİ İÇİN YENİ STİL */
         .footer-links-area {
             padding: 10px;
             border-top: 1px solid #333; 
@@ -193,69 +138,35 @@
             align-items: center;
             flex-wrap: wrap; 
         }
-        .footer-links-area a {
-             color: #E0E0E0; 
-             text-decoration: none;
-             white-space: nowrap;
-        }
-        .footer-links-area a:hover {
-            color: #DC3545 !important; /* GÜNCEL RENK: KIRMIZI */
-        }
-        .link-item {
-            padding: 0 15px; 
-        }
-        .link-item span {
-            color: #DC3545; /* İletişim Başlığı GÜNCEL RENK: KIRMIZI */
-            font-weight: bold; 
-            margin-right: 10px;
-        }
-        /* Mobil uyum: Sadece kanal linki kaldığı için ayırıcı ve diğer mobil kurallar basitleştirildi. */
+        .footer-links-area a { color: #E0E0E0; text-decoration: none; white-space: nowrap; }
+        .footer-links-area a:hover { color: #DC3545 !important; }
+        .link-item { padding: 0 15px; }
+        .link-item span { color: #DC3545; font-weight: bold; margin-right: 10px; }
         @media (max-width: 600px) {
-            .footer-links-area {
-                flex-direction: column;
-            }
-            .link-item {
-                padding: 5px 0;
-            }
+            .footer-links-area { flex-direction: column; }
+            .link-item { padding: 5px 0; }
         }
-        /* Mobil/Tablet Uyumu için arama çubuğu düzenlemesi */
         @media (max-width: 768px) {
-            .header {
-                flex-wrap: wrap; 
-            }
-            .search-bar {
-                width: 100%; 
-                margin-top: 20px;
-                margin-left: 0;
-            }
-            .search-bar input {
-                width: 100%;
-            }
-            .content {
-                padding: 20px;
-            }
+            .header { flex-wrap: wrap; }
+            .search-bar { width: 100%; margin-top: 20px; margin-left: 0; }
+            .search-bar input { width: 100%; }
+            .content { padding: 20px; }
         }
         /* CSS Bitişi */
     </style>
 </head>
 <body>
-
     <div class="sidebar" id="sidebar">
-        <div class="logo">MEXY SUBSCRIPTION</div>
-        
-        <div id="nav-login" class="nav-link" data-filter="login">SUBSCRIPTION GİRİŞİ</div>
-        <button id="login-button">Giriş Yap</button>
-        <div id="nav-latest" class="nav-link active" data-filter="latest" style="margin-top: 30px;">Son Yüklenenler</div>
-        
+        <div class="logo">MEXY ARCHIVE</div>
+        <div id="nav-all" class="nav-link" data-filter="all">DUYURULAR</div>
+        <div id="nav-latest" class="nav-link active" data-filter="latest">Son Yüklenenler</div>
         <div class="nav-link" style="margin-top: 20px; font-weight: bold; color: #DC3545;">Takımlar</div>
-        
         <div class="nav-link team-link" data-filter="Galatasaray">Galatasaray Maçları</div>
         <div class="nav-link team-link" data-filter="Fenerbahçe">Fenerbahçe Maçları</div>
         <div class="nav-link team-link" data-filter="Beşiktaş">Beşiktaş Maçları</div>
         <div class="nav-link team-link" data-filter="Trabzonspor">Trabzonspor Maçları</div>
         <div class="nav-link team-link" data-filter="Göztepe">Göztepe Maçları</div>
         <div class="nav-link team-link" data-filter="Samsunspor">Samsunspor Maçları</div>
-
     </div>
 
     <div class="content">
@@ -269,72 +180,59 @@
 
         <img id="section-cover-image" src="" alt="Bölüm Kapağı" style="width: 100%; height: 250px; object-fit: cover; margin-bottom: 30px; display: none;">
 
-        <div class="match-grid" id="match-container">
-            </div>
+        <div class="match-grid" id="match-container"></div>
 
         <div id="announcement-container" style="display: none; padding: 20px; text-align: center;">
             <h2 style="color: #DC3545; border-bottom: 2px solid #333; padding-bottom: 10px;">ZEUS X MEXY X SATURN SUB'a HOŞ GELDİN!</h2>
-            
             <p style="font-size: 16px; line-height: 1.6; margin-top: 20px;">
-                *Selam Dostum Bizden Sub Aldığın İçin Teşekkür Ederiz Verdiğin Paranın Karşılığını Alıcaksın Merak Etme**<br><br>
+                Selam Dostum! Bizden Sub Aldığın İçin Teşekkür Ederiz. Verdiğin Paranın Karşılığını Alıcaksın Merak Etme.<br><br>
                 Amacımız, kaliteli ve kesintisiz arşiv içeriğini en hızlı şekilde sunmaktır.
             </p>
-            
             <div style="max-width: 400px; margin: 0 auto; text-align: left;">
                 <p style="font-weight: bold; margin-top: 20px;">Nasıl Gezinilir?</p>
                 <ul>
-                    <li>**Son Yüklenenler:** En güncel paylaşımlar hemen burada.</li>
-                    <li>**Takımlar:** İstediğin takımın maçlarını hızlıca filtrele.</li>
+                    <li>Son Yüklenenler: En güncel paylaşımlar hemen burada.</li>
+                    <li>Takımlar: İstediğin takımın maçlarını hızlıca filtrele.</li>
                 </ul>
             </div>
-            
             <p style="font-size: 16px; line-height: 1.6; margin-top: 10px;">
                 Tüm maçlar Drive linki üzerinden indirilebilir durumdadır. İyi seyirler!
             </p>
-            
             <p style="margin-top: 30px; color: #A0A0A0; font-style: italic;">
                 Yeni maçlar ve güncellemeler için Telegram Kanalımıza Gelebilirsiniz.
             </p>
         </div>
 
-
         <div class="footer">
             <div class="footer-links-area">
                 <div class="link-item">
-                    <span style="color: #DC3545; font-weight: bold; margin-right: 10px;">İletişim:</span>
+                    <span>İletişim:</span>
                     <a href="https://t.me/+gUBjnG1woGA0NWFk" target="_blank">Telegram</a>
                 </div>
             </div>
-            
             <div style="margin-top: 10px;">
-                &copy; 2025 ZEUS X MEXY X SATURN SUB• 
+                &copy; 2025 ZEUS X MEXY X SATURN SUB
             </div>
         </div>
     </div>
 
     <script>
-        // JavaScript Başlangıcı
-
-        // Tarih Formatlama Fonksiyonu
         function formatDate(dateString) {
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             const date = new Date(dateString);
             return date.toLocaleDateString('tr-TR', options);
         }
 
-        // Maç Kartı Oluşturma Fonksiyonu
         function createMatchCard(match) {
             const card = document.createElement('div');
             card.className = 'match-card';
-            
             const isPlaceholder = match.driveLink === '#';
-
             card.innerHTML = `
                 <img src="${match.cover}" alt="${match.title} Kapağı" class="match-cover">
                 <div class="match-info">
                     <div class="match-title">${match.title}</div>
                     <div class="match-meta">${match.league} | ${formatDate(match.date)}</div>
-                    <a href="${match.driveLink}" target="_blank" class="download-button" ${isPlaceholder ? 'style="background-color: #666; cursor: default;"' : ''}>
+                    <a href="${match.driveLink}" target="_blank" class="download-button" ${isPlaceholder ? 'style="background-color:#666;cursor:default;"' : ''}>
                         ${isPlaceholder ? 'LİNK EKLENECEK' : 'İNDİR'}
                     </a>
                 </div>
@@ -342,455 +240,293 @@
             return card;
         }
 
-        // Maçları Render Etme Fonksiyonu
         function renderMatches(filteredMatches, title) {
             const container = document.getElementById('match-container');
             const contentTitle = document.getElementById('content-title');
-            const announcement = document.getElementById('announcement-container'); 
-            const sectionCover = document.getElementById('section-cover-image'); 
-            
-            const activeLink = document.querySelector('.nav-link.active');
-            const filterType = activeLink ? activeLink.dataset.filter : 'latest'; 
-
+            const announcement = document.getElementById('announcement-container');
+            const sectionCover = document.getElementById('section-cover-image');
             container.innerHTML = '';
-            announcement.style.display = 'none'; 
-            sectionCover.style.display = 'none'; // Varsayılan: Görseli Gizle
+            announcement.style.display = 'none';
+            sectionCover.style.display = 'none';
 
-            // Takımların Sekme Kapağı Görsel Linkleri
-            // BUNLARI GERÇEK GÖRSEL LİNKLERİYLE DEĞİŞTİRMELİSİNİZ!
-            const teamCovers = {
-            };
-
-
-            if (title === 'SUBSCRIPTION GİRİŞİ') {
+            if(title === 'DUYURULAR') {
                 contentTitle.textContent = title;
-                announcement.style.display = 'block'; 
-                return; 
+                announcement.style.display = 'block';
+                return;
             }
-            
+
             contentTitle.textContent = title;
 
-            // Kapak Görselini Gösterme Mantığı
-            if (teamCovers[filterType]) {
-                 sectionCover.src = teamCovers[filterType];
-                 sectionCover.style.display = 'block';
-                 sectionCover.alt = title.replace(' Maçları', '') + " Kapak Görseli";
-            }
-
-
-            // Gerçek maçları ve yer tutucuları ayır
-            const realMatches = filteredMatches.filter(m => m.driveLink !== '#');
-            const placeholderMatches = filteredMatches.filter(m => m.driveLink === '#');
-            
-            let matchesToDisplay = realMatches;
-            
-            // Sadece 'Son Yüklenenler' için sıralama ve kesme yap.
-            if (title === 'Son Yüklenenler') {
-                // En yeniden en eskiye sırala
-                matchesToDisplay.sort((a, b) => new Date(b.date) - new Date(a.date));
-                // Sadece ilk 8 taneyi göster
-                matchesToDisplay = matchesToDisplay.slice(0, 8);
-            } 
-            
-            // Eğer filtreleme sonucunda hiç gerçek maç yoksa, o takıma ait yer tutucuları göster.
-            if (matchesToDisplay.length === 0 && placeholderMatches.length > 0) {
-                matchesToDisplay = placeholderMatches;
-            }
-
-
-            // Sonuç Kontrolü
-            if (matchesToDisplay.length === 0) {
-                container.innerHTML = `<p style="color: #666; font-size: 18px; padding-top: 50px;">${title.includes('Maçları') ? 'Seçtiğin takım için henüz maç eklenmedi.' : 'Bu kriterlere uygun maç bulunamadı.'}</p>`;
-            } 
-            else {
-                matchesToDisplay.forEach(match => {
-                    container.appendChild(createMatchCard(match));
-                });
+            if(filteredMatches.length === 0){
+                container.innerHTML = `<p style="color:#666;font-size:18px;padding-top:50px;">${title.includes('Maçları') ? 'Seçtiğin takım için henüz maç eklenmedi.' : 'Bu kriterlere uygun maç bulunamadı.'}</p>`;
+            } else {
+                filteredMatches.forEach(match => container.appendChild(createMatchCard(match)));
             }
         }
 
-        // Navigasyon ve Filtreleme
         const sidebar = document.getElementById('sidebar');
         const navLinks = document.querySelectorAll('.nav-link');
-        const loginButton = document.getElementById('login-button'); // Yeni Giriş Yap butonu
-
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
-                // Sadece team-link'ler ve nav-latest aktif hale getirilebilir. nav-login sadece başlık
-                if (this.id === 'nav-login') return; 
-
                 navLinks.forEach(l => l.classList.remove('active'));
                 this.classList.add('active');
-
                 const filterType = this.dataset.filter;
                 let filteredList = [...matches];
                 let title = this.textContent;
-
-                if (filterType === 'login') {
-                    // Subscription Girişi (Eski Duyurular)
-                    title = 'SUBSCRIPTION GİRİŞİ';
-                } else if (filterType === 'latest') {
-                    title = 'Son Yüklenenler';
-                } 
-                else {
-                    // Takım filtrelemesi
-                    filteredList = matches.filter(match => 
-                        match.team_1 === filterType || match.team_2 === filterType
-                    );
-                }
-
+                if(filterType === 'all') title = 'DUYURULAR';
+                else if(filterType === 'latest') title = 'Son Yüklenenler';
+                else filteredList = matches.filter(m => m.team_1 === filterType || m.team_2 === filterType);
                 renderMatches(filteredList, title);
-                
-                // Menü tıklandığında menüyü kapat 
-                if (sidebar.classList.contains('open')) {
-                    sidebar.classList.remove('open');
-                }
+                if(sidebar.classList.contains('open')) sidebar.classList.remove('open');
             });
         });
-        
-        // GİRİŞ YAP BUTONU İŞLEVİ (Sadece duyurular ekranına yönlendirme simülasyonu)
-        if (loginButton) {
-             loginButton.addEventListener('click', function() {
-                navLinks.forEach(l => l.classList.remove('active'));
-                document.getElementById('nav-login').classList.add('active'); // Navigasyonda aktifliği koru
-                renderMatches([], 'SUBSCRIPTION GİRİŞİ'); 
-                
-                if (sidebar.classList.contains('open')) {
-                    sidebar.classList.remove('open');
-                }
-             });
-        }
 
-
-        // Arama Çubuğu Fonksiyonu
-        document.getElementById('search-input').addEventListener('keyup', function() {
+        document.getElementById('search-input').addEventListener('keyup', function(){
             const searchTerm = this.value.toLowerCase();
-            const filteredList = matches.filter(match => 
-                (match.title.toLowerCase().includes(searchTerm) ||
-                match.team_1.toLowerCase().includes(searchTerm) ||
-                match.team_2.toLowerCase().includes(searchTerm) ||
-                match.league.toLowerCase().includes(searchTerm)) &&
-                match.driveLink !== '#' 
+            const filteredList = matches.filter(m =>
+                (m.title.toLowerCase().includes(searchTerm) ||
+                m.team_1.toLowerCase().includes(searchTerm) ||
+                m.team_2.toLowerCase().includes(searchTerm) ||
+                m.league.toLowerCase().includes(searchTerm)) &&
+                m.driveLink !== '#'
             );
             renderMatches(filteredList, `Arama Sonuçları: "${this.value}"`);
-            
             navLinks.forEach(l => l.classList.remove('active'));
             document.getElementById('announcement-container').style.display = 'none';
         });
 
-        // MENÜ AÇMA/KAPAMA LOGİĞİ 
         const menuToggle = document.getElementById('menu-toggle');
-        if (menuToggle && sidebar) {
-            menuToggle.addEventListener('click', function() {
-                sidebar.classList.toggle('open');
-            });
-        }
+        menuToggle.addEventListener('click', ()=> sidebar.classList.toggle('open'));
 
-        // Sayfa yüklendiğinde varsayılan olarak 'Son Yüklenenler'i göster
-        document.addEventListener('DOMContentLoaded', () => {
-            const latestMatches = [...matches]; 
-            document.getElementById('nav-login').classList.remove('active'); // Giriş başlığını başlangıçta aktif yapma
+        document.addEventListener('DOMContentLoaded', ()=>{
+            document.getElementById('nav-all').classList.remove('active');
             document.getElementById('nav-latest').classList.add('active');
-            renderMatches(latestMatches, 'Son Yüklenenler');
+            renderMatches([...matches], 'Son Yüklenenler');
         });
 
-        // Maç Verileri
         const matches = [
-            // ------------------------------------------
-            // 1. KARAGÜMRÜK 
-            // ------------------------------------------
-            {
-                id: 'gs-karagumruk-2025-08-15',
-                title: 'Galatasaray 3 - 0 Karagümrük',
-                date: '2025-08-15',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/C2soc-GmHyzodYnH_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1MhvDIMRIQKIeRIMSqHnvwa--EmXctbXx/view?usp=sharing',
-                team_1: 'Galatasaray',
-                team_2: 'Fatih Karagümrük',
-                league: 'Süper Lig'
-            },
-            // ------------------------------------------
-            // 2. GAZİANTEP 
-            // ------------------------------------------
-            {
-                id: 'gaziantep-gs-2025-08-22',
-                title: 'Gaziantep 0 - 3 Galatasaray',
-                date: '2025-08-22',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/hLxN91NQSRXM4Ojv_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1EBxegSf02_LLt0ElxMTAhjaUQ_2w3NUS/view?usp=sharing',
-                team_1: 'Gaziantep',
-                team_2: 'Galatasaray',
-                league: 'Süper Lig'
-            },
-            // ------------------------------------------
-            // 3. KAYSERİSPOR 
-            // ------------------------------------------
-            {
-                id: 'kayserispor-gs-2025-08-24',
-                title: 'Kayserispor 0 - 4 Galatasaray',
-                date: '2025-08-24',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/OM1L4VsIUzIjP4tG_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1gKDTADgwuXf2f8XeSArX2LZ9xNqwmP8c/view?usp=sharing',
-                team_1: 'Kayserispor',
-                team_2: 'Galatasaray',
-                league: 'Süper Lig'
-            },
-            
-            // ------------------------------------------
-            // 4. RİZESPOR 
-            // ------------------------------------------
-            {
-                id: 'gs-rizespor-2025-08-30',
-                title: 'Galatasaray 3 - 1 Ç. Rizespor',
-                date: '2025-08-30',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/-3OLulW8luMcZ84N_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1yPWYS_teETQYCaF5vlyP43mEd3KB57K9/view?usp=sharing', 
-                team_1: 'Galatasaray',
-                team_2: 'Çaykur Rizespor',
-                league: 'Süper Lig' 
-            },
-            // ------------------------------------------
-            // 5. EYÜPSPOR 
-            // ------------------------------------------
-            {
-                id: 'eyupspor-gs-2025-09-13',
-                title: 'Eyüpspor 0 - 2 Galatasaray',
-                date: '2025-09-13',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/ZZwUVvfHCkBnrQMB_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/16JFBuZ3mhdsoatFcgZrvU4PwHvQTIlIX/view?usp=sharing', 
-                team_1: 'Eyüpspor',
-                team_2: 'Galatasaray',
-                league: 'Süper Lig' 
-            },
-            // ------------------------------------------
-            // 6. KONYASPOR 
-            // ------------------------------------------
-            {
-                id: 'gs-konyaspor-2025-09-22',
-                title: 'Galatasaray 3 - 1 Konyaspor',
-                date: '2025-09-22',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/3zD5YXlh099rPclL_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1yPWYS_teETQYCaF5vlyP43mEd3KB57K9/view?usp=sharing',
-                team_1: 'Galatasaray',
-                team_2: 'Konyaspor',
-                league: 'Süper Lig' 
-            },
-            // ------------------------------------------
-            // 7. ALANYASPOR 
-            // ------------------------------------------
-            {
-                id: 'alanya-gs-2025-09-26',
-                title: 'Alanyaspor 0 - 1 Galatasaray',
-                date: '2025-09-26',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/LUmuwIKI6Xon1K2Z_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1JbiCOhWj5Y0G1Ei8NNgHtNzfcbvbuJTj/view?usp=sharing', 
-                team_1: 'Alanyaspor',
-                team_2: 'Galatasaray',
-                league: 'Süper Lig' 
-            },
-            // ------------------------------------------
-            // 8. BEŞİKTAŞ DERBİSİ 
-            // ------------------------------------------
-            {
-                id: 'gs-bjk-derbi-2025-10-04',
-                title: 'Galatasaray 1 - 1 Beşiktaş DERBİ',
-                date: '2025-10-04',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/6_m_TeKG0giBW1Ji_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1WI05ad1NUHPGbHEi0_FvePWfecs6Vq1L/view?usp=sharing', 
-                team_1: 'Galatasaray',
-                team_2: 'Beşiktaş',
-                league: 'Süper Lig Derbi' 
-            },
-            // ------------------------------------------
-            // 9. BAŞAKŞEHİR 
-            // ------------------------------------------
-            {
-                id: 'basaksehir-gs-2025-10-18',
-                title: 'Başakşehir 1 - 2 Galatasaray',
-                date: '2025-10-18',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/s-4EU_H2twV5-JXR_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1K_ptltnnCwujMz2BNhR6nhO8XudE1zZu/view?usp=sharing', 
-                team_1: 'Başakşehir',
-                team_2: 'Galatasaray',
-                league: 'Süper Lig' 
-            },
-            // ------------------------------------------
-            // 10. GÖZTEPE 
-            // ------------------------------------------
-            {
-                id: 'gs-goztepe-2025-10-26',
-                title: 'Galatasaray 3 - 1 Göztepe',
-                date: '2025-10-26',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/n1pCwaf60bDKKPUs_768x432.jpg',
-                driveLink: 'https://drive.google.com/file/d/1j94TIN2Lq66QF2kc57Lrj2yrhy-tNheF/view?usp=sharing', 
-                team_1: 'Galatasaray',
-                team_2: 'Göztepe',
-                league: 'Süper Lig' 
-            },
-            // ------------------------------------------
-            // 11. TRABZONSPOR DERBİSİ 
-            // ------------------------------------------
-            {
-                id: 'gs-ts-derbi-2025-11-01',
-                title: 'Galatasaray 0 - 0 Trabzonspor DERBİ',
-                date: '2025-11-01',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/ttVAh1Uu-W57FR48_768x432.jpg', 
-                driveLink: 'https://drive.google.com/file/d/1SPARX5gqHl0djZp33GkDSgVdsR0O9pIl/view?usp=sharing', 
-                team_1: 'Galatasaray',
-                team_2: 'Trabzonspor',
-                league: 'Süper Lig Derbi' 
-            },
-            // ------------------------------------------
-            // 12. KOCAELİSPOR 
-            // ------------------------------------------
-            {
-                id: 'kocaeli-gs-2025-11-09',
-                title: 'Kocaelispor 1 - 0 Galatasaray', 
-                date: '2025-11-09', 
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/nYPi6k_cWpTpXGiF_768x432.jpg', 
-                driveLink: 'https://drive.google.com/file/d/1GN2rNos9JAw66OiCMarvpDTuWesj7USI/view?usp=sharing', 
-                team_1: 'Kocaelispor',
-                team_2: 'Galatasaray',
-                league: 'Süper Lig' 
-            },
-            // ------------------------------------------
-            // 13. FENERBAHÇE - KAYSERİSPOR (LİNK GÜNCEL)
-            // ------------------------------------------
-            {
-                id: 'fb-kayserispor-2025-11-09',
-                title: 'Fenerbahçe 4 - 2 Kayserispor', 
-                date: '2025-11-09', 
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/pGxl1RyicKQ1DMdD_768x432.jpg', 
-                driveLink: 'https://drive.google.com/file/d/1kZ6tgDJ6wV4qgCnaRObQdcV8Lcg6Aukk/view?usp=sharing',
-                team_1: 'Fenerbahçe',
-                team_2: 'Kayserispor',
-                league: 'Süper Lig' 
-            },
-            
-            // ------------------------------------------
-            // 14. TRABZONSPOR - KOCAELİSPOR
-            // ------------------------------------------
-            {
-                id: 'ts-kocaeli-2025-08-11',
-                title: 'Trabzonspor 1 - 0 Kocaelispor',
-                date: '2025-08-11', 
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/CjzD_10A0Udps5Sl_768x432.jpg', 
-                driveLink: 'https://drive.google.com/file/d/1aY2uTVfVDlPIg1suzfQxwFXxQr2GlHEq/view?usp=sharing',
-                team_1: 'Trabzonspor',
-                team_2: 'Kocaelispor',
-                league: 'Süper Lig'
-            }, 
-            // ------------------------------------------
-            // 15. KASIMPAŞA - TRABZONSPOR
-            // ------------------------------------------
-            {
-                id: 'kasimpasa-ts-2025-08-18',
-                title: 'Kasımpaşa 0 - 1 Trabzonspor',
-                date: '2025-08-18', 
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/6uiq46BDPXPd_zmv_768x432.jpg', 
-                driveLink: 'https://drive.google.com/file/d/1SBzlZzrkFBF19SYAl0fDrpy7IHT2JJ5E/view?usp=sharing',
-                team_1: 'Kasımpaşa',
-                team_2: 'Trabzonspor',
-                league: 'Süper Lig'
-            },
-            // ------------------------------------------
-            // 16. TRABZONSPOR - SAMSUNSPOR
-            // ------------------------------------------
-            {
-                id: 'ts-samsun-2025-08-31',
-                title: 'Trabzonspor 1 - 1 Samsunspor',
-                date: '2025-08-31', 
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/ZPMkSyRKy1KzaFYM_768x432.jpg', 
-                driveLink: 'https://drive.google.com/file/d/1CgETGCUCSOTCFNIZ35oH7WlA8yd5nF8m/view?usp=sharing',
-                team_1: 'Trabzonspor',
-                team_2: 'Samsunspor',
-                league: 'Süper Lig'
-            },
-            // ------------------------------------------
-            // 17. TRABZONSPOR - ANTALYASPOR
-            // ------------------------------------------
-            {
-                id: 'ts-antalya-2025-08-24',
-                title: 'Trabzonspor 1 - 0 Antalyaspor',
-                date: '2025-08-24', 
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/1fS43vggPYNfr1Js_768x432.jpg', 
-                driveLink: 'https://drive.google.com/file/d/1ESLQ_cvTyZWnm8kWnz7Bdi-13TjCkAcr/view?usp=sharing',
-                team_1: 'Trabzonspor',
-                team_2: 'Antalyaspor',
-                league: 'Süper Lig'
-            },
-            // ------------------------------------------
-            // 18. TRABZONSPOR - GAZİANTEP FK
-            // ------------------------------------------
-            {
-                id: 'ts-gaziantep-2025-09-20',
-                title: 'Trabzonspor 1 - 1 Gaziantep FK',
-                date: '2025-09-20', 
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/sr1sprwDV0hK_HM2_768x432.jpg', 
-                driveLink: 'https://drive.google.com/file/d/1MsKfgnEunboUikWnxYoeF6tNOAAARmJ7/view?usp=sharing',
-                team_1: 'Trabzonspor',
-                team_2: 'Gaziantep FK',
-                league: 'Süper Lig'
-            },
-            // ------------------------------------------
-            // 19. TRABZONSPOR - ALANYASPOR
-            // ------------------------------------------
-            {
-                id: 'ts-alanya-2025-11-08',
-                title: 'Trabzonspor 1 - 1 Alanyaspor',
-                date: '2025-11-08', 
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/9vHC2UIVjUTbrnyz_768x432.jpg', 
-                driveLink: 'https://drive.google.com/file/d/1OsAEiHCh-AmCZovafTQ9heQBVrzQQDsB/view?usp=sharing',
-                team_1: 'Trabzonspor',
-                team_2: 'Alanyaspor',
-                league: 'Süper Lig'
-            },
-            // ------------------------------------------
-            // 20. TRABZONSPOR - EYÜPSPOR
-            // ------------------------------------------
-            {
-                id: 'ts-eyup-2025-10-25',
-                title: 'Trabzonspor 2 - 0 Eyüpspor',
-                date: '2025-10-25', 
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/FCWe8NGUVRtwZFHV_768x432.jpg', 
-                driveLink: 'https://drive.google.com/file/d/1uaeiHELW8a51ZvXKmQRtgv96_o6W-IoG/view?usp=sharing',
-                team_1: 'Trabzonspor',
-                team_2: 'Eyüpspor',
-                league: 'Süper Lig'
-            },
-            // ------------------------------------------
-            // 21. RİZESPOR - TRABZONSPOR
-            // ------------------------------------------
-            {
-                id: 'rize-ts-2025-10-18',
-                title: 'Rizespor 1 - 2 Trabzonspor',
-                date: '2025-10-18', 
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/drtrvziJ0tzBUt9A_768x432.jpg', 
-                driveLink: 'https://drive.google.com/file/d/1_LUIZ7AdbCoMMwl07gYUeOoqvsBFM7tg/view?usp=sharing',
-                team_1: 'Rizespor',
-                team_2: 'Trabzonspor',
-                league: 'Süper Lig'
-            },
-            // ------------------------------------------
-            // 22. KARAGÜMRÜK - TRABZONSPOR
-            // ------------------------------------------
-            {
-                id: 'karagumruk-ts-2025-09-27',
-                title: 'Karagümrük 3 - 4 Trabzonspor',
-                date: '2025-09-27', 
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/bOn973T0WJVoxkPK_768x432.jpg', 
-                driveLink: 'https://drive.google.com/file/d/18HuEc7S-2svfW3QMFyAWCyIH6krZvhPc/view?usp=sharing',
-                team_1: 'Karagümrük',
-                team_2: 'Trabzonspor',
-                league: 'Süper Lig'
-            },
-            // ------------------------------------------
-            // YER TUTUCU MAÇLAR 
-            // ------------------------------------------
-        
-        ];
-
-        // JavaScript Bitişi
+            const matches = [
+    {
+        id: 'gs-karagumruk-2025-08-15',
+        title: 'Galatasaray 3 - 0 Karagümrük',
+        date: '2025-08-15',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/C2soc-GmHyzodYnH_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1MhvDIMRIQKIeRIMSqHnvwa--EmXctbXx/view?usp=sharing',
+        team_1: 'Galatasaray',
+        team_2: 'Fatih Karagümrük',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'gaziantep-gs-2025-08-22',
+        title: 'Gaziantep 0 - 3 Galatasaray',
+        date: '2025-08-22',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/hLxN91NQSRXM4Ojv_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1EBxegSf02_LLt0ElxMTAhjaUQ_2w3NUS/view?usp=sharing',
+        team_1: 'Gaziantep',
+        team_2: 'Galatasaray',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'kayserispor-gs-2025-08-24',
+        title: 'Kayserispor 0 - 4 Galatasaray',
+        date: '2025-08-24',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/OM1L4VsIUzIjP4tG_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1gKDTADgwuXf2f8XeSArX2LZ9xNqwmP8c/view?usp=sharing',
+        team_1: 'Kayserispor',
+        team_2: 'Galatasaray',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'gs-rizespor-2025-08-30',
+        title: 'Galatasaray 3 - 1 Ç. Rizespor',
+        date: '2025-08-30',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/-3OLulW8luMcZ84N_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1yPWYS_teETQYCaF5vlyP43mEd3KB57K9/view?usp=sharing',
+        team_1: 'Galatasaray',
+        team_2: 'Çaykur Rizespor',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'eyupspor-gs-2025-09-13',
+        title: 'Eyüpspor 0 - 2 Galatasaray',
+        date: '2025-09-13',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/ZZwUVvfHCkBnrQMB_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/16JFBuZ3mhdsoatFcgZrvU4PwHvQTIlIX/view?usp=sharing',
+        team_1: 'Eyüpspor',
+        team_2: 'Galatasaray',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'gs-konyaspor-2025-09-22',
+        title: 'Galatasaray 3 - 1 Konyaspor',
+        date: '2025-09-22',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/3zD5YXlh099rPclL_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1yPWYS_teETQYCaF5vlyP43mEd3KB57K9/view?usp=sharing',
+        team_1: 'Galatasaray',
+        team_2: 'Konyaspor',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'alanya-gs-2025-09-26',
+        title: 'Alanyaspor 0 - 1 Galatasaray',
+        date: '2025-09-26',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/LUmuwIKI6Xon1K2Z_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1JbiCOhWj5Y0G1Ei8NNgHtNzfcbvbuJTj/view?usp=sharing',
+        team_1: 'Alanyaspor',
+        team_2: 'Galatasaray',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'gs-bjk-derbi-2025-10-04',
+        title: 'Galatasaray 1 - 1 Beşiktaş DERBİ',
+        date: '2025-10-04',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/6_m_TeKG0giBW1Ji_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1WI05ad1NUHPGbHEi0_FvePWfecs6Vq1L/view?usp=sharing',
+        team_1: 'Galatasaray',
+        team_2: 'Beşiktaş',
+        league: 'Süper Lig Derbi'
+    },
+    {
+        id: 'basaksehir-gs-2025-10-18',
+        title: 'Başakşehir 1 - 2 Galatasaray',
+        date: '2025-10-18',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/s-4EU_H2twV5-JXR_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1K_ptltnnCwujMz2BNhR6nhO8XudE1zZu/view?usp=sharing',
+        team_1: 'Başakşehir',
+        team_2: 'Galatasaray',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'gs-goztepe-2025-10-26',
+        title: 'Galatasaray 3 - 1 Göztepe',
+        date: '2025-10-26',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/n1pCwaf60bDKKPUs_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1j94TIN2Lq66QF2kc57Lrj2yrhy-tNheF/view?usp=sharing',
+        team_1: 'Galatasaray',
+        team_2: 'Göztepe',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'gs-ts-derbi-2025-11-01',
+        title: 'Galatasaray 0 - 0 Trabzonspor DERBİ',
+        date: '2025-11-01',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/ttVAh1Uu-W57FR48_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1SPARX5gqHl0djZp33GkDSgVdsR0O9pIl/view?usp=sharing',
+        team_1: 'Galatasaray',
+        team_2: 'Trabzonspor',
+        league: 'Süper Lig Derbi'
+    },
+    {
+        id: 'kocaeli-gs-2025-11-09',
+        title: 'Kocaelispor 1 - 0 Galatasaray',
+        date: '2025-11-09',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/nYPi6k_cWpTpXGiF_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1GN2rNos9JAw66OiCMarvpDTuWesj7USI/view?usp=sharing',
+        team_1: 'Kocaelispor',
+        team_2: 'Galatasaray',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'fb-kayserispor-2025-11-09',
+        title: 'Fenerbahçe 4 - 2 Kayserispor',
+        date: '2025-11-09',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/pGxl1RyicKQ1DMdD_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1kZ6tgDJ6wV4qgCnaRObQdcV8Lcg6Aukk/view?usp=sharing',
+        team_1: 'Fenerbahçe',
+        team_2: 'Kayserispor',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'ts-kocaeli-2025-08-11',
+        title: 'Trabzonspor 1 - 0 Kocaelispor',
+        date: '2025-08-11',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/CjzD_10A0Udps5Sl_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1aY2uTVfVDlPIg1suzfQxwFXxQr2GlHEq/view?usp=sharing',
+        team_1: 'Trabzonspor',
+        team_2: 'Kocaelispor',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'kasimpasa-ts-2025-08-18',
+        title: 'Kasımpaşa 0 - 1 Trabzonspor',
+        date: '2025-08-18',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/6uiq46BDPXPd_zmv_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1SBzlZzrkFBF19SYAl0fDrpy7IHT2JJ5E/view?usp=sharing',
+        team_1: 'Kasımpaşa',
+        team_2: 'Trabzonspor',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'ts-samsun-2025-08-31',
+        title: 'Trabzonspor 1 - 1 Samsunspor',
+        date: '2025-08-31',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/ZPMkSyRKy1KzaFYM_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1CgETGCUCSOTCFNIZ35oH7WlA8yd5nF8m/view?usp=sharing',
+        team_1: 'Trabzonspor',
+        team_2: 'Samsunspor',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'ts-antalya-2025-08-24',
+        title: 'Trabzonspor 1 - 0 Antalyaspor',
+        date: '2025-08-24',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/1fS43vggPYNfr1Js_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1ESLQ_cvTyZWnm8kWnz7Bdi-13TjCkAcr/view?usp=sharing',
+        team_1: 'Trabzonspor',
+        team_2: 'Antalyaspor',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'ts-gaziantep-2025-09-20',
+        title: 'Trabzonspor 1 - 1 Gaziantep FK',
+        date: '2025-09-20',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/sr1sprwDV0hK_HM2_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1MsKfgnEunboUikWnxYoeF6tNOAAARmJ7/view?usp=sharing',
+        team_1: 'Trabzonspor',
+        team_2: 'Gaziantep FK',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'ts-alanya-2025-11-08',
+        title: 'Trabzonspor 1 - 1 Alanyaspor',
+        date: '2025-11-08',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/9vHC2UIVjUTbrnyz_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1OsAEiHCh-AmCZovafTQ9heQBVrzQQDsB/view?usp=sharing',
+        team_1: 'Trabzonspor',
+        team_2: 'Alanyaspor',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'ts-eyup-2025-10-25',
+        title: 'Trabzonspor 2 - 0 Eyüpspor',
+        date: '2025-10-25',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/FCWe8NGUVRtwZFHV_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1uaeiHELW8a51ZvXKmQRtgv96_o6W-IoG/view?usp=sharing',
+        team_1: 'Trabzonspor',
+        team_2: 'Eyüpspor',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'rize-ts-2025-10-18',
+        title: 'Rizespor 1 - 2 Trabzonspor',
+        date: '2025-10-18',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/drtrvziJ0tzBUt9A_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/1_LUIZ7AdbCoMMwl07gYUeOoqvsBFM7tg/view?usp=sharing',
+        team_1: 'Rizespor',
+        team_2: 'Trabzonspor',
+        league: 'Süper Lig'
+    },
+    {
+        id: 'karagumruk-ts-2025-09-27',
+        title: 'Karagümrük 3 - 4 Trabzonspor',
+        date: '2025-09-27',
+        cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/bOn973T0WJVoxkPK_768x432.jpg',
+        driveLink: 'https://drive.google.com/file/d/18HuEc7S-2svfW3QMFyAWCyIH6krZvhPc/view?usp=sharing',
+        team_1: 'Karagümrük',
+        team_2: 'Trabzonspor',
+        league: 'Süper Lig'
+    }
+];            
     </script>
 </body>
 </html>
